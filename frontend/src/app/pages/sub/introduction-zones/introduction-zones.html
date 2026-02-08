@@ -1,0 +1,41 @@
+<div class="background-layer"></div>
+<div class="overlay-layer"></div>
+<div class="hero-content">
+  <div class="text-column">
+    <div class="badge-pill">✨ {{ 'INTRO.BADGE' | translate }}</div>
+    <h1>{{ 'INTRO.TITLE' | translate }}</h1>
+    <p class="main-desc">
+      {{ 'INTRO.DESCRIPTION' | translate }}
+    </p>
+    <div class="action-buttons">
+      <button class="btn-primary-glow" (click)="goToRegister()">
+        <span>{{ 'INTRO.JOIN_MISSION' | translate }}</span>
+        <div class="shine"></div>
+      </button>
+      <button class="btn-secondary-outline" (click)="goToExplore()">
+        {{ 'INTRO.EXPLORE_MAP' | translate }} 🗺️
+      </button>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item" *ngFor="let stat of stats">
+        <span class="stat-number">{{ stat.current }}+</span>
+        <span class="stat-label">{{ stat.labelKey | translate }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="visual-column">
+    <div class="glass-card-stack">
+      <div class="stack-image" 
+           *ngFor="let img of imagesList; let i = index"
+           [class.active]="i === currentImageIndex"
+           [style.backgroundImage]="'url(' + img + ')'">
+        <div class="img-overlay">
+          <span>📍 {{ 'INTRO.PROTECTED_ZONE' | translate }} #0{{i+1}}</span>
+        </div>
+      </div>
+      <div class="floating-compass" (click)="goToRandomArea()">
+        <span class="compass-icon">🧭</span>
+      </div>
+    </div>
+  </div>
+</div>

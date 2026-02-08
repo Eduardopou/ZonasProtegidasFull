@@ -1,0 +1,188 @@
+/*
+  :host se convierte en el "contexto de posicionamiento" para que el
+  formulario sepa con respecto a qué centrarse.
+*/
+:host {
+  display: block;
+  position: relative; /* Clave para el posicionamiento absoluto del hijo */
+ 
+  min-height: 100vh; /* 1. Le dice al :host que ocupe TODA la altura */
+  padding-top: 120px;  /* 2. Deja el espacio para tu header fijo de 120px */
+  box-sizing: border-box; /* 3. Asegura que el padding no desborde la altura */
+  isolation: isolate;
+}
+
+/* --- AÑADE ESTE NUEVO BLOQUE --- */
+:host::before {
+  content: ""; /* Requerido para que el pseudo-elemento exista */
+  position: fixed;   /* 1. Lo fija a la ventana del navegador */
+  inset: 0;          /* 2. Lo estira a todas las esquinas (top/left/bottom/right = 0) */
+  z-index: -1;       /* 3. Lo pone DETRÁS de tu formulario y todo lo demás */
+
+  /* --- Pega las propiedades de fondo aquí --- */
+  background-image: url('/assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* Ya no necesitamos 'background-attachment: fixed', 
+     porque el elemento en sí mismo está 'fixed' */
+}
+
+
+/*
+  Contenedor del formulario con efecto de vidrio
+  ¡Aquí está la magia del centrado!
+*/
+.login-container {
+  /* --- NUEVOS ESTILOS PARA EL CENTRADO ABSOLUTO --- */
+  /* En .login-container */
+  position: relative; /* O simplemente bórralo, 'relative' es el default */
+  margin: 40px auto;  /* Centra horizontalmente y añade un margen superior */
+/* Elimina top, left, y transform */
+  /* --- FIN DE LOS NUEVOS ESTILOS --- */
+
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 90px;
+  width: 500px;
+  max-width: 90%; /* Ajustado para que se vea bien en móviles */
+  color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+.login-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 500;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+}
+
+/* Campos del formulario */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 1.5em;
+  margin-bottom: 5px;
+  opacity: 0.9;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1.4em;
+  outline: none;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input-group input:focus {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Botón de login */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: rgba(0, 150, 255, 0.8);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.3em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+.login-btn:hover {
+  background: rgba(0, 150, 255, 1);
+  transform: scale(1.02);
+}
+
+/* Enlace extra para registro */
+.extra-links {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.2em;
+  padding: 5px;
+}
+
+.extra-links p {
+    margin: 0;
+}
+
+.extra-links a {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.extra-links a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para el mensaje de error */
+.error-message {
+  color: #ffb3b3;
+  background: rgba(255,0,0,0.08);
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+/* --- ESTILOS RESPONSIVOS --- */
+
+/* No se necesitan media queries complejas, ya que el centrado y max-width se encargan */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 30px 25px;
+  }
+
+  .login-container h2 {
+    font-size: 1.4em;
+  }
+}
+
+/* Estilos para el botón "Crear cuenta" (.link-style-button)
+  para que parezca un enlace, igual que el de "Recuperar contraseña".
+*/
+.link-style-button {
+  /* --- 1. Resetear la apariencia de botón --- */
+  background: none;
+  border: none;
+  padding: 0;
+  
+  /* --- 2. Heredar la fuente del párrafo --- */
+  /* Esto hace que coincida con el texto "¿No tienes cuenta? " */
+  font-family: inherit;
+  font-size: inherit;
+  
+  /* --- 3. Aplicar estilos de enlace (copiados de .extra-links a) --- */
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500; /* Igual que el <a> */
+  text-decoration: none;
+
+  /* --- 4. Comportamiento de enlace --- */
+  cursor: pointer;
+}
+
+.link-style-button:hover {
+  /* Aplicar el mismo hover que los otros enlaces */
+  text-decoration: underline;
+}

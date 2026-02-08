@@ -1,0 +1,18 @@
+<button mat-button [matMenuTriggerFor]="menu" class="nav-icon-link language-trigger">
+    <div class="scanner-effect"></div>
+    <img src="assets/translation.png" alt="Menú de idiomas">
+</button>
+
+<mat-menu #menu="matMenu" class="language-menu-panel">
+  <div class="menu-header">
+    <span>{{ 'LANGUAGE_MENU_TITLE' | translate }}</span>
+    <span class="icon">🌍</span>
+  </div>
+  <div class="menu-divider"></div>
+  <button mat-menu-item class="menu-item-glass" (click)="changeLanguage('es')">
+    <span class="menu-icon">🇪🇸</span> {{ 'LANGUAGE_SPANISH' | translate }}
+  </button>
+  <button mat-menu-item class="menu-item-glass" (click)="changeLanguage('en')">
+    <span class="menu-icon">🇺🇸</span> {{ 'LANGUAGE_ENGLISH' | translate }}
+  </button>
+</mat-menu>

@@ -1,0 +1,226 @@
+
+:host {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  color: white;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.8)), url('/assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  transition: opacity 0.8s ease;
+}
+
+footer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  padding: 4rem 2rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+}
+.footer-container :is(.top-section, .description, .footer-links, .sources-section, .bottom-text) {
+  opacity: 0;
+  transform: translateY(40px); 
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); 
+}
+
+:host(.in-view) .top-section {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s; 
+}
+
+:host(.in-view) .description {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s; 
+}
+
+:host(.in-view) .footer-links {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s; 
+}
+
+:host(.in-view) .sources-section {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.7s; 
+}
+
+:host(.in-view) .bottom-text {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.9s; 
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.logo img {
+  width: 50px;
+}
+.logo h1 {
+  font-size: 2.2rem;
+  margin: 0;
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.social-icons a {
+  margin-left: 15px;
+  opacity: 0.7;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.social-icons a:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+}
+.social-icons img {
+  width: 30px;
+  filter: invert(1);
+}
+
+.description {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.link-column h2 {
+  font-size: 1.2rem;
+  color: #aefcff;
+  margin-bottom: 1rem;
+  border-left: 3px solid #00ffff;
+  padding-left: 10px;
+}
+
+.link-column a {
+  display: block;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  padding: 5px 0;
+  transition: color 0.3s;
+}
+.link-column a:hover {
+  color: #00ffff;
+}
+
+.sources-section {
+  margin-top: 3rem;
+  background: rgba(0, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: left;
+  width: 100%;
+  max-width: 1000px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s ease;
+}
+.sources-section:hover {
+  transform: scale(1.005); 
+}
+
+.sources-section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #aefcff;
+  text-align: center;
+}
+
+.sources-section ul {
+  list-style: none;
+  padding: 0;
+  columns: 2; 
+}
+.sources-section li {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-indent: -10px; 
+  padding-left: 10px;
+}
+.sources-section li::before {
+  content: '• ';
+  color: #00ffff;
+}
+
+/* Parte inferior */
+.bottom-text {
+  margin-top: 3rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+  width: 100%;
+}
+.policies a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.policies a:hover {
+  color: #00ffff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .top-section {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .footer-links {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .link-column h2 {
+    border-left: none;
+    border-bottom: 3px solid #00ffff;
+    padding-left: 0;
+    padding-bottom: 5px;
+    margin-top: 2rem;
+  }
+  .sources-section ul {
+    columns: 1;
+  }
+}

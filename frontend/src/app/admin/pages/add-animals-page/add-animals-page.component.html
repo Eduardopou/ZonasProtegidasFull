@@ -1,0 +1,28 @@
+<app-header-page></app-header-page>
+<app-back-button [floating]="true"></app-back-button>
+
+<div class="admin-layout">
+  <section class="panel panel-form">
+    <header>
+      <h2>Registrar nueva especie</h2>
+    </header>
+
+    <div class="panel-body form-scroll">
+      <app-add-animal (animalAdded)="animalList.loadAnimals()"></app-add-animal>
+    </div>
+  </section>
+
+  <section class="panel panel-list">
+    <header>
+      <div>
+        <h2>Fauna registrada</h2>
+      </div>
+      <button type="button" class="refresh-btn" (click)="animalList.loadAnimals()">
+        ⟳
+      </button>
+    </header>
+    <div class="panel-body list-scroll">
+      <app-manage-animals #animalList></app-manage-animals>
+    </div>
+  </section>
+</div>

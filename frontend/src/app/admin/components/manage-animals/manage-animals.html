@@ -1,0 +1,35 @@
+<div class="manage-container"> <div class="header-section">
+  <h2>{{ 'ADMIN.MANAGE_ANIMALS.TITLE' | translate }}</h2> </div>
+
+<div class="search-bar">
+  <input
+    type="text"
+    [placeholder]="'ADMIN.MANAGE_ANIMALS.SEARCH_PLACEHOLDER' | translate"
+    (keyup)="filterAnimals($event)"
+  />
+</div>
+
+<div class="animals-grid">
+  <div class="animal-card" *ngFor="let animal of filteredAnimals">
+    <div class="card-image">
+      <img [src]="'http://localhost:8080' + animal.image" [alt]="animal.name" loading="lazy">
+    </div>
+    <div class="card-content">
+      <h3>{{ animal.name }}</h3>
+      <p class="scientific">{{ animal.scientificName }}</p>
+      <span class="status-badge" [class.danger]="animal.extinction">
+        {{ animal.extinction ? ('ADMIN.MANAGE_ANIMALS.STATUS.ENDANGERED' | translate) : ('ADMIN.MANAGE_ANIMALS.STATUS.STABLE' | translate) }}
+      </span>
+      <p class="zone-tag">📍 {{ animal.zonaProtegidaNombre || ('ADMIN.MANAGE_ANIMALS.NO_ZONE' | translate) }}</p>
+
+      <a [routerLink]="['/admin/edit-animal', animal.id]" [state]="{ data: animal }" class="btn-edit">
+        {{ 'ADMIN.MANAGE_ANIMALS.EDIT' | translate }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="filteredAnimals.length === 0" class="no-results">
+  <p>{{ 'ADMIN.MANAGE_ANIMALS.NO_RESULTS' | translate }}</p>
+</div>
+</div>

@@ -1,0 +1,306 @@
+<app-header-page></app-header-page>
+<app-back-button [floating]="true"></app-back-button>
+<div class="reserve-container">
+
+<div class="zone-header" *ngIf="nombreZona">
+    <h1>{{ nombreZona }}</h1>
+    <div class="divider"></div>
+  </div>
+
+
+  <!-- Barra de pestañas -->
+  <nav class="tab-nav">
+    <button *ngFor="let tab of tabs"
+            [class.active]="activeTab === tab.id"
+            (click)="setActive(tab.id)">
+      {{ tab.labelKey | translate }}
+    </button>
+  </nav>
+
+  <div class="tab-content" [@fadeSlide]>
+    <!-- Pestaña ANIMALES -->
+    <section *ngIf="activeTab === 'animales'" @fadeSlide>
+      <h2>{{ 'RESERVE.ANIMALS.TITLE' | translate }}</h2>
+      <p class="subtitle">{{ 'RESERVE.ANIMALS.SUBTITLE' | translate }}</p>
+
+      <div *ngIf="loading" class="loading">{{ 'RESERVE.ANIMALS.LOADING' | translate }}</div>
+
+<div class="animal-grid">
+  <button class="animal-card clickable" 
+          *ngFor="let animal of animales"
+          (click)="abrirModal(animal)"
+          role="button"
+          [attr.aria-label]="('RESERVE.ANIMALS.VIEW_DETAILS' | translate:{ name: animal.name })">
+
+    <!-- BOTÓN FLOTANTE DE FAVORITOS -->
+   <button class="fav-btn"
+        (click)="agregarAFavoritos(animal.id, $event)"
+        [attr.aria-label]="('RESERVE.ANIMALS.ADD_FAVORITE' | translate)">
+  ❤️
+  </button>
+
+
+    <div class="image-wrapper">
+      <img [src]="animal.image" [alt]="animal.name" />
+      <div class="overlay-info" *ngIf="animal.extinction">
+        <span>{{ 'RESERVE.ANIMALS.ENDANGERED' | translate }}</span>
+      </div>
+    </div>
+
+    <div class="info">
+      <h3>{{ animal.name }}</h3>
+      <p class="scientific">{{ animal.scientificName }}</p>
+      <p class="zone">{{ animal.zonaProtegidaNombre }}</p>
+    </div>
+
+  </button>
+</div>
+
+
+
+      <p *ngIf="!loading && !animales.length" class="no-results">{{ 'RESERVE.ANIMALS.NO_RESULTS' | translate }}</p>
+    </section>
+
+    <!--Pestaña INVESTIGACIONES -->
+   <section *ngIf="activeTab === 'investigaciones'" @fadeSlide class="research-section">
+  <h2>{{ 'RESERVE.RESEARCH.TITLE' | translate }}</h2>
+  <p class="subtitle">{{ 'RESERVE.RESEARCH.SUBTITLE' | translate }}</p>
+
+  <div *ngIf="loadingInvestigaciones" class="loading">
+    {{ 'RESERVE.RESEARCH.LOADING' | translate }}
+  </div>
+
+  <div class="research-grid" *ngIf="!loadingInvestigaciones">
+    <div class="research-card" *ngFor="let item of investigaciones">
+      
+      <div class="card-header">
+        <span class="badge" [ngClass]="getStatusClass(item.estado)">
+          {{ item.estado }}
+        </span>
+        <span class="permit-id" [attr.title]="('RESERVE.RESEARCH.PERMIT_TITLE' | translate)">
+          {{ 'RESERVE.RESEARCH.PERMIT_LABEL' | translate }} {{ item.permisosGobierno }}
+        </span>
+      </div>
+
+      <div class="card-body">
+        <h3>{{ item.titulo }}</h3>
+        
+        <div class="researcher-info">
+          <div class="avatar-placeholder">
+            {{ item.investigadorPrincipal.charAt(0) }}
+          </div>
+          <div>
+            <p class="name">{{ item.investigadorPrincipal }}</p>
+            <p class="institution">{{ item.institucion }}</p>
+          </div>
+        </div>
+
+        <p class="abstract">{{ item.resumen }}</p>
+        
+        <div class="meta-info">
+           <small>{{ 'RESERVE.RESEARCH.REGISTER_DATE' | translate }} {{ item.fechaInicio }}</small>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <div class="progress-container">
+          <div class="progress-info">
+            <span class="progress-label">{{ 'RESERVE.RESEARCH.PROJECT_PHASE' | translate }}</span>
+            <span class="progress-percentage">{{ item.progreso }}%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="fill" [style.width.%]="item.progreso"></div>
+          </div>
+        </div>
+
+        <button class="btn-details">
+          <span class="icon">📄</span> {{ 'RESERVE.RESEARCH.VIEW_DOCS' | translate }}
+        </button>
+      </div>
+
+    </div>
+  </div>
+  
+  <div *ngIf="!loadingInvestigaciones && investigaciones.length === 0" class="no-results">
+    <p>{{ 'RESERVE.RESEARCH.NO_RESULTS' | translate }}</p>
+  </div>
+
+
+
+  
+</section>
+
+    <!--Pestaña REGLAMENTO -->
+   <section *ngIf="activeTab === 'reglamento'" @fadeSlide class="rules-section">
+  
+  <div class="section-header">
+    <h2>{{ 'RESERVE.RULES.TITLE' | translate }}</h2>
+    <p class="subtitle">{{ 'RESERVE.RULES.SUBTITLE' | translate }}</p>
+    
+    <div class="legal-notice">
+      <span class="icon">⚖️</span>
+      <small>{{ 'RESERVE.RULES.LEGAL_NOTICE' | translate }}</small>
+    </div>
+  </div>
+
+  <div *ngIf="loadingReglamento" class="loading">{{ 'RESERVE.RULES.LOADING' | translate }}</div>
+
+  <div class="rules-grid" *ngIf="!loadingReglamento">
+    
+    <div class="rule-card" *ngFor="let regla of reglamentos" [ngClass]="getRuleClass(regla.tipo)">
+      
+      <div class="rule-icon">
+        <span>{{ regla.icono }}</span>
+      </div>
+
+      <div class="rule-content">
+        <div class="rule-header">
+          <h3>{{ regla.titulo }}</h3>
+          <span class="rule-tag">{{ regla.tipo }}</span>
+        </div>
+        
+        <p class="description">{{ regla.descripcion }}</p>
+        
+        <div class="rule-footer" *ngIf="regla.sancion || regla.articuloLegal">
+          <div class="meta-item" *ngIf="regla.articuloLegal">
+            <strong>{{ 'RESERVE.RULES.REF' | translate }}</strong> {{ regla.articuloLegal }}
+          </div>
+          <div class="meta-item sanction" *ngIf="regla.sancion">
+            <strong>⚠️ {{ 'RESERVE.RULES.SANCTION' | translate }}</strong> {{ regla.sancion }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="download-area">
+    <button class="btn-download">
+      📥 {{ 'RESERVE.RULES.DOWNLOAD_PDF' | translate }}
+    </button>
+  </div>
+
+</section>
+
+    <!--Experiencias -->
+    <section *ngIf="activeTab === 'actividades'" @fadeSlide class="activities-section">
+  
+  <div class="section-header">
+    <h2>{{ 'RESERVE.ACTIVITIES.TITLE' | translate }}</h2>
+    <p class="subtitle">{{ 'RESERVE.ACTIVITIES.SUBTITLE' | translate }}</p>
+  </div>
+
+  <div *ngIf="loadingActividades" class="loading">{{ 'RESERVE.ACTIVITIES.LOADING' | translate }}</div>
+
+  <div class="activities-grid" *ngIf="!loadingActividades">
+    
+    <div class="activity-card" *ngFor="let act of actividades">
+  
+      <div class="card-image" [style.backgroundImage]="'url(' + act.imagenUrl + ')'">
+        <div class="overlay-gradient"></div>
+        
+        <div class="badge-guide" *ngIf="act.requiereGuia">
+          <span class="icon">👮</span> {{ 'RESERVE.ACTIVITIES.REQUIRES_GUIDE' | translate }}
+        </div>
+      </div>
+
+      <div class="card-content">
+        <div class="content-top">
+          <h3>{{ act.titulo }}</h3>
+
+          <div class="badges-row">
+            <span class="badge-difficulty" [ngClass]="getDifficultyClass(act.dificultad)">
+              {{ act.dificultad }}
+            </span>
+          </div>
+
+          <div class="meta-row">
+            <span class="meta-item"><i class="icon-time">⏳</i> {{ act.duracion }}</span>
+            <span class="meta-item price">{{ act.costo === 0 ? ('RESERVE.ACTIVITIES.FREE' | translate) : ('$' + act.costo + ' MXN') }}</span>
+          </div>
+        </div>
+
+        <p class="description">{{ act.descripcion }}</p>
+
+        <button class="btn-action">
+          {{ act.requiereGuia ? ('RESERVE.ACTIVITIES.CONTACT_GUIDE' | translate) : ('RESERVE.ACTIVITIES.VIEW_ROUTE' | translate) }}
+        </button>
+      </div>
+</div>
+
+  </div>
+
+  <div *ngIf="!loadingActividades && actividades.length === 0" class="no-results">
+    <p>{{ 'RESERVE.ACTIVITIES.NO_RESULTS' | translate }}</p>
+  </div>
+</section>
+
+    <!--Pestaña MAPA -->
+    <section *ngIf="activeTab === 'mapa'" @fadeSlide>
+      <h2>{{ 'RESERVE.MAP.TITLE' | translate }}</h2>
+      <div class="map-container" id="map"></div>
+    </section>
+
+    <section *ngIf="activeTab === 'mapa'" @fadeSlide>
+  <h2>{{ 'RESERVE.MAP.TITLE' | translate }}</h2>
+  </section>
+
+
+<div class="section-divider"></div>
+
+<app-comments-section 
+  [sectionContext]="activeTab">
+</app-comments-section>
+
+</div>
+
+    
+  </div> 
+
+
+  <div class="modal-backdrop" *ngIf="showModal" (click)="cerrarModal()" [@fadeSlide]>
+  
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    
+    <button class="close-btn" (click)="cerrarModal()">×</button>
+
+    <div class="modal-body" *ngIf="selectedAnimal">
+      
+      <div class="modal-image-col">
+        <img [src]="selectedAnimal.image" [alt]="selectedAnimal.name">
+        <div class="modal-badge" *ngIf="selectedAnimal.extinction">⚠️ {{ 'RESERVE.ANIMALS.ENDANGERED' | translate }}</div>
+      </div>
+
+      <div class="modal-info-col">
+        <h2 class="modal-title">{{ selectedAnimal.name }}</h2>
+        <p class="modal-scientific">{{ selectedAnimal.scientificName }}</p>
+        
+        <div class="divider"></div>
+
+        <div class="ai-insight-box">
+          <div class="ai-header">
+            <span class="ai-icon">✨</span> 
+            <span>{{ 'RESERVE.AI.INSIGHTS' | translate }}</span>
+          </div>
+
+          <div class="typing-indicator" *ngIf="loadingAI">
+            <span></span><span></span><span></span>
+          </div>
+
+          <p class="ai-text" *ngIf="!loadingAI">
+            "{{ aiDescription }}"
+          </p>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn-full-details" (click)="irADetalleCompleto()">
+            {{ 'RESERVE.AI.VIEW_FULL_CARD' | translate }} →
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

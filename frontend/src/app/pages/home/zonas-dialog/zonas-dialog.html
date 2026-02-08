@@ -1,0 +1,26 @@
+<header class="dialog-header">
+  <h1 mat-dialog-title>{{ 'HOME.ZONAS_DIALOG.TITLE' | translate }}</h1>
+  <button mat-icon-button (click)="onClose()" [attr.aria-label]="('COMMON.CLOSE' | translate)">
+    <mat-icon>close</mat-icon>
+  </button>
+</header>
+<mat-dialog-content>
+  <p>{{ 'HOME.ZONAS_DIALOG.DESCRIPTION' | translate }}</p>
+  <div class="zona-button-list">
+    <button 
+      *ngFor="let zona of zonas" 
+      (click)="onZoneSelect(zona)" 
+      class="zona-button"
+      role="button"
+      [attr.aria-label]="('COMMON.SELECT' | translate) + ' ' + zona.nombre + ', ' + zona.ubicacion">
+      <div class="zona-info">
+        <span class="zona-nombre">{{ zona.nombre }}</span>
+        <span class="zona-ubicacion">{{ zona.ubicacion }}</span>
+      </div>
+      <span class="zona-arrow">→</span>
+    </button>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onClose()">{{ 'COMMON.CANCEL' | translate }}</button>
+</mat-dialog-actions>

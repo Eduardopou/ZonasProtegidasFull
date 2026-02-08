@@ -1,0 +1,53 @@
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 99;
+}
+
+.btn-back:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #00ffff; 
+  color: #00ffff;
+  transform: translateX(-5px); 
+  box-shadow: 0 6px 20px rgba(0, 255, 255, 0.15);
+}
+
+.icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.btn-back.is-floating {
+  position: fixed;
+  top: 150px; 
+  left: 20px;
+  animation: slideInLeft 0.5s ease-out;
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+  .btn-back.is-floating {
+    top: auto;
+    bottom: 20px; 
+    left: 20px;
+    background: rgba(20, 20, 20, 0.8); 
+  }
+}

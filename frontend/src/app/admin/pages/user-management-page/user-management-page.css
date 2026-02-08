@@ -1,0 +1,234 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('/assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.user-management-container {
+  width: 90%;
+  max-width: 1000px;
+  padding: 40px;
+  margin: auto;
+}
+
+.glass-container {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.glass-container:hover {
+  transform: translateY(-3px);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 30px;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.6);
+}
+
+.search-container {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  width: 60%;
+  padding: 12px 18px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #222;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+.search-input::placeholder {
+  color: #555;
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  color: #111;
+  font-size: 0.95rem;
+}
+
+th {
+  background: rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.admin-button {
+  background-color: #81b2e7;
+  color: rgb(0, 0, 0);
+  text-shadow: 0 1px 2px rgb(255, 255, 255);
+}
+
+.admin-button:hover {
+  background-color: #367bc5;
+}
+
+.admin-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.role-label {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.admin-role {
+  background-color: rgba(0, 123, 255, 0.2);
+  color: #004085;
+}
+
+.user-role {
+  background-color: rgba(40, 167, 69, 0.2);
+  color: #155724;
+}
+
+.message {
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.success-message {
+  background-color: rgba(212, 237, 218, 0.8);
+  color: #155724;
+  border: 1px solid rgba(195, 230, 203, 0.8);
+}
+
+.error-message {
+  background-color: rgba(248, 215, 218, 0.8);
+  color: #721c24;
+  border: 1px solid rgba(245, 198, 203, 0.8);
+}
+
+.no-users-message {
+  text-align: center;
+  padding: 20px;
+  color: #333;
+  font-style: italic;
+}
+
+.glass-container {
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.25),
+    rgba(0, 0, 0, 0.15)
+  );
+}
+
+h2, th, td, .message, .no-users-message {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+th, td, .message, .no-users-message {
+  color: #111;
+}
+
+.admin-role {
+  background-color: rgba(0, 123, 255, 0.25);
+  color: #002752;
+}
+.user-role {
+  background-color: rgba(40, 167, 69, 0.25);
+  color: #0b3d1b;
+}
+
+td, th {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+
+
+

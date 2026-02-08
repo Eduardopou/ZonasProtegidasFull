@@ -1,0 +1,203 @@
+:host {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 2rem;
+  min-height: calc(100vh ); 
+
+  background-color: #2c3a31;
+  
+  /* estilos de fondo*/
+  background-image: url('/assets/background7.jpg');
+  background-size: cover;
+  background-position: center;
+  
+  background-attachment: scroll;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom, 
+    rgba(0, 0, 0, 0.1) 0%,  
+    rgba(0, 0, 0, 0.4) 50%,  
+    rgba(0, 0, 0, 0.75) 100% 
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.main-title {
+  font-family: 'National Park', sans-serif;
+  font-size: 5.3rem;
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  -webkit-text-stroke: .5px black; 
+  
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+}
+
+.subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.3rem, 3vw, 2.5rem);
+  font-weight: 500;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+}
+
+
+
+
+
+/* Botón de llamada a la acción: "Elegir reserva +" */
+.cta-button {
+  position: absolute;
+  top: 18vw;           
+  left: 5vw;         
+  z-index: 2;
+  font-family: 'National Park', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.5rem); 
+  font-weight: 600;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 1em 2em;  
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  max-width: 150vw;   
+  box-sizing: border-box;
+  white-space: nowrap; 
+  text-decoration: none;
+}
+
+.cta-button:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  border-color: white;
+}
+
+
+/* Contenedor del texto y botón */
+.hero-content {
+  position: absolute;
+  left: 5vw;
+  bottom: 5vw;
+  max-width: 90vw;
+  z-index: 1; 
+  color: white; 
+}
+
+/*ESTILOS RESPONSIVOS*/
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: clamp(2rem, 8vw, 4.5rem);
+  }
+  .subtitle {
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+  }
+  .cta-button {
+    top: 14vw;
+    left: 5vw;
+    font-size: clamp(0.9rem, 4vw, 1.2rem);
+    padding: 0.8em 1.2em;
+    max-width: 90vw;
+  }
+  .hero-content {
+    left: 5vw;
+    bottom: 5vw;
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .main-title {
+    font-size: clamp(1.5rem, 10vw, 3.5rem);
+  }
+  .subtitle {
+    font-size: clamp(0.8rem, 4vw, 1rem);
+  }
+  .cta-button {
+    position: static;
+    display: block;
+    margin: 2rem auto 0 auto;
+    width: 95vw;
+    font-size: clamp(0.9rem, 5vw, 1.1rem);
+    padding: 0.8em 0;
+    border-radius: 30px;
+    white-space: normal; 
+  }
+  .hero-content {
+    position: static;
+    margin-top: 2rem;
+    max-width: 98vw;
+    text-align: center;
+    left: auto;
+    bottom: auto;
+  }
+
+
+}
+
+  
+/*Animaciones de Entrada*/
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+
+.hero-content .subtitle {
+  animation: slideInUp 0.8s 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.hero-content .main-title {
+  animation: slideInUp 0.8s 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.cta-button {
+  animation: fadeIn 1s 0.8s ease-out both;
+}
+
+
+/*  animar al hacer scroll */
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, 
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

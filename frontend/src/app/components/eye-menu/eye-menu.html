@@ -1,0 +1,24 @@
+<button matButton [matMenuTriggerFor]="menu" class="nav-icon-link accessibility-trigger">
+    <div class="scanner-effect"></div>
+    <img src="assets/eye_logo.png" alt="Opciones de Accesibilidad">
+</button>
+
+<mat-menu #menu="matMenu" class="accessibility-menu-panel">
+  <div class="menu-header">
+    <span>Modos de Visión</span>
+    <span class="icon">👁️‍🗨️</span>
+  </div>
+  <div class="menu-divider"></div>
+  <button mat-menu-item class="menu-item-glass" 
+        (click)="toggleDyslexia()" 
+        [class.active-mode]="isDyslexiaActive">
+    <span class="menu-icon">🧠</span>
+    {{ isDyslexiaActive ? 'Desactivar Dislexia' : 'Lectura para dislexia' }}
+  </button>
+  <button mat-menu-item class="menu-item-glass" 
+        (click)="toggleDaltonism()"
+        [class.active-mode]="isDaltonismActive">
+    <span class="menu-icon">🎨</span>
+    {{ isDaltonismActive ? 'Desactivar Filtro' : 'Lectura para daltonismo' }}
+  </button>
+</mat-menu>

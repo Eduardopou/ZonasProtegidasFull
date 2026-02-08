@@ -1,0 +1,476 @@
+{
+  "LANGUAGE_MENU_TITLE": "Idioma",
+  "LANGUAGE_SPANISH": "Español",
+  "LANGUAGE_ENGLISH": "Inglés",
+  "LOGIN": "Iniciar sesión",
+  "ADMIN_PANEL": "Panel administrador",
+  "LOGOUT": "Cerrar sesión",
+  "MENU": "Menú",
+  "COMMON": {
+    "CLOSE": "Cerrar",
+    "CANCEL": "Cancelar",
+    "SELECT": "Seleccionar",
+    "PREV": "Anterior",
+    "NEXT": "Siguiente"
+  },
+  "HOME": {
+    "HERO_SUBTITLE": "Cuidando a México",
+    "HERO_TITLE": "Reservas Protegidas",
+    "CHOOSE_RESERVE": "Elegir reserva +",
+    "ZONAS_DIALOG": {
+      "TITLE": "Reservas Disponibles",
+      "DESCRIPTION": "Selecciona una reserva para ver más detalles."
+    }
+  },
+  "INTRO": {
+    "BADGE": "Portal Oficial",
+    "TITLE": "Explora México Natural",
+    "DESCRIPTION": "Una herramienta educativa para conectar con el patrimonio natural. Datos oficiales, biodiversidad en tiempo real y proyectos de conservación al alcance de estudiantes y exploradores.",
+    "JOIN_MISSION": "Únete a la Misión",
+    "EXPLORE_MAP": "Explorar Mapa",
+    "PROTECTED_ZONE": "Zona Protegida",
+    "DISCOVER_RANDOM": "Descubrir al azar"
+  },
+  "PROTECTED_AREAS": "Áreas Protegidas",
+  "REGISTERED_SPECIES": "Especies Registradas",
+  "STATES": "Estados",
+  "EDU": {
+    "BADGE": "Aula Virtual",
+    "TITLE": "Conoce, Aprende y Protege",
+    "INTRO": "Las Áreas Naturales Protegidas no son solo tierra cercada. Son bibliotecas vivas donde cada especie es un libro único. Descubre cómo clasificamos estos santuarios.",
+    "CAT": {
+      "BIO": {
+        "TITLE": "Reservas de la Biosfera",
+        "SUBTITLE": "Equilibrio Global",
+        "DESC": "Áreas de relevancia planetaria. Buscan la armonía entre la conservación de la biodiversidad y el desarrollo humano sostenible."
+      },
+      "PARK": {
+        "TITLE": "Parques Nacionales",
+        "SUBTITLE": "Tesoros Escénicos",
+        "DESC": "Zonas protegidas por su belleza escénica, valor científico e histórico. El turismo está permitido, pero la explotación de recursos está prohibida."
+      },
+      "FLORA": {
+        "TITLE": "Áreas de Protección",
+        "SUBTITLE": "Santuarios de Vida",
+        "DESC": "Lugares destinados exclusivamente a la preservación de especies endémicas, raras o en peligro de extinción y sus hábitats críticos."
+      }
+    },
+    "FIELD_DATA": "Datos de Campo",
+    "SCAN_NEXT": "Escanear Siguiente",
+    "RECORD": "REGISTRO",
+    "FACTS": {
+      "JAGUAR": "El jaguar tiene la mordida más fuerte entre los felinos; puede perforar caparazones de tortuga.",
+      "OAK": "Un árbol de encino puede absorber hasta 150 kg de CO₂ al año, purificando el aire.",
+      "MEXICAN_WOLF": "El lobo mexicano es la subespecie más pequeña de Norteamérica y estuvo extinto en vida silvestre.",
+      "MANGLAR": "Los manglares protegen las costas de huracanes y son guarderías para el 70% de los peces marinos."
+    }
+  },
+  "SEARCH": {
+    "TITLE": "Explora las Áreas Naturales de México",
+    "SELECT_STATE_ARIA": "Selecciona un estado",
+    "ALL_STATES": "Todos los estados",
+    "VIEW_MAP": "Ver Mapa"
+  },
+  "PROFILE": {
+    "ID_CARD_TITLE": "ZONAS PROTEGIDAS • ID OFICIAL",
+    "LOADING": "Cargando credenciales...",
+    "IMAGE_ALT": "Foto de perfil",
+    "CHANGE_PHOTO": "Cambiar",
+    "NAME_PLACEHOLDER": "Tu nombre",
+    "ROLE_TITLE": "Rango / Rol",
+    "EMAIL_TITLE": "Identificador (Email)",
+    "BUTTONS": {
+      "CANCEL": "✖ Cancelar",
+      "EDIT": "✎ Editar Datos",
+      "SAVE": "💾 Guardar Cambios"
+    },
+    "JOURNAL": {
+      "TITLE": "Mi Colección de Avistamientos",
+      "SUBTITLE": "Especies guardadas en tu bitácora personal.",
+      "EMPTY_TITLE": "Tu bitácora está vacía.",
+      "EMPTY_HINT": "Explora las zonas y guarda especies para verlas aquí.",
+      "VIEW_CARD": "Ver Ficha",
+      "REMOVE_TITLE": "Eliminar de la colección",
+      "CONFIRM_REMOVE": "¿Estás seguro de que quieres eliminar este animal de tus favoritos?",
+      "VIEW_MORE_TODO": "Función de 'Ver Más' aún no implementada."
+    },
+    "ERRORS": {
+      "LOAD_PROFILE": "Error al cargar el perfil.",
+      "LOAD_FAVORITES": "Error al cargar los favoritos.",
+      "SAVE_PROFILE": "Error al guardar. Verifica los datos.",
+      "UPLOAD_IMAGE": "Error al subir la imagen.",
+      "REMOVE_FAVORITE": "Error al eliminar el favorito."
+    }
+  },
+  "RESERVE": {
+    "TAB": {
+      "ANIMALS": "Animales de la zona",
+      "RESEARCH": "Investigaciones",
+      "RULES": "Reglamento",
+      "EXPERIENCES": "Experiencias",
+      "MAP": "Mapa"
+    },
+    "ANIMALS": {
+      "TITLE": "Fauna de la zona",
+      "SUBTITLE": "Explora los animales registrados en esta reserva",
+      "LOADING": "Cargando animales...",
+      "ADD_FAVORITE": "Agregar a favoritos",
+      "ENDANGERED": "En peligro",
+      "NO_RESULTS": "No se encontraron animales para esta zona.",
+      "VIEW_DETAILS": "Ver detalles de {{name}}",
+      "ADD_FAVORITE_SUCCESS": "Añadido a favoritos ✔",
+      "ADD_FAVORITE_ERROR": "Ocurrió un error al agregar a favoritos"
+    },
+    "RESEARCH": {
+      "TITLE": "Proyectos de Investigación",
+      "SUBTITLE": "Transparencia científica y monitoreo activo en la reserva.",
+      "LOADING": "Cargando datos del Sistema Nacional de Investigadores...",
+      "PERMIT_LABEL": "Permiso:",
+      "PERMIT_TITLE": "Número de Permiso Oficial",
+      "REGISTER_DATE": "Fecha de registro:",
+      "PROJECT_PHASE": "Fase de proyecto",
+      "VIEW_DOCS": "Ver Documentación",
+      "NO_RESULTS": "No se encontraron investigaciones activas para esta zona."
+    },
+    "RULES": {
+      "TITLE": "Reglamento y Convivencia",
+      "SUBTITLE": "Para asegurar la conservación del área y tu seguridad, estas normas son obligatorias.",
+      "LEGAL_NOTICE": "Regulado bajo la Ley General del Equilibrio Ecológico y la Protección al Ambiente.",
+      "LOADING": "Cargando normativa vigente...",
+      "REF": "Ref:",
+      "SANCTION": "Sanción:",
+      "DOWNLOAD_PDF": "Descargar Reglamento Oficial (PDF)"
+    },
+    "ACTIVITIES": {
+      "TITLE": "Experiencias en la Naturaleza",
+      "SUBTITLE": "Descubre, explora y conecta. Elige tu próxima aventura.",
+      "LOADING": "Buscando aventuras disponibles...",
+      "REQUIRES_GUIDE": "Requiere Guía",
+      "FREE": "Gratis",
+      "CONTACT_GUIDE": "Contactar Guía",
+      "VIEW_ROUTE": "Ver Ruta",
+      "NO_RESULTS": "No hay actividades registradas para esta temporada."
+    },
+    "MAP": {
+      "TITLE": "Mapa de la zona"
+    },
+    "AI": {
+      "INSIGHTS": "Gemini AI Insights",
+      "VIEW_FULL_CARD": "Ver Ficha Técnica Completa",
+      "MISSING_DATA": "Datos del animal incompletos.",
+      "FALLBACK_ZONE": "esta reserva de México",
+      "PROMPT": "Actúa como un biólogo experto. Escribe un dato curioso (máximo 80 palabras) sobre el animal \"{{animalName}}\" (Nombre científico: {{scientificName}}) que habita en la zona \"{{zoneName}}\". El tono debe ser educativo. Evita responder tú, solo da la respuesta.",
+      "NO_DATA": "No se pudo obtener información en este momento.",
+      "UNAVAILABLE": "La IA no responde en este momento."
+    }
+  },
+  "CONTACT": {
+    "LOGO_ALT": "Logo de Reservas Naturales Protegidas",
+    "SOCIAL": {
+      "FACEBOOK": "Abrir Facebook",
+      "INSTAGRAM": "Abrir Instagram",
+      "TIKTOK": "Abrir TikTok",
+      "GMAIL": "Enviar correo"
+    },
+    "DESCRIPTION": "Descubre, protege y conecta con las Áreas Naturales Protegidas de México. Informamos, inspiramos y promovemos acciones sostenibles para conservar la biodiversidad.",
+    "LINKS": {
+      "ABOUT": {
+        "TITLE": "Sobre Nosotros",
+        "MISSION": "Misión",
+        "HISTORY": "Historia",
+        "TEAM": "Equipo",
+        "CONTACT": "Contacto"
+      },
+      "ACTIONS": {
+        "TITLE": "Acciones",
+        "CAMPAIGNS": "Campañas",
+        "EDUCATION": "Educación Ambiental",
+        "VOLUNTEER": "Voluntariado",
+        "COLLABORATE": "Colabora"
+      },
+      "PROJECTS": {
+        "TITLE": "Proyectos",
+        "ZONES": "Zonas Protegidas",
+        "RESEARCH": "Investigaciones",
+        "MAPS": "Mapas Interactivos",
+        "REPORTS": "Reportes"
+      },
+      "DONATIONS": {
+        "TITLE": "Donaciones",
+        "SUPPORT": "Apoya una Reserva",
+        "TRANSPARENCY": "Transparencia",
+        "SPONSORSHIPS": "Patrocinios",
+        "GREEN_SHOP": "Tienda Verde"
+      }
+    },
+    "SOURCES": {
+      "TITLE": "Fuentes de Información",
+      "SEMARNAT": "Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT)",
+      "CONANP": "Comisión Nacional de Áreas Naturales Protegidas (CONANP)",
+      "ATLAS": "Atlas Ambiental de México - Edición 2025",
+      "MAGAZINE": "Revista Conserva México, Vol. 12",
+      "UNAM": "Universidad Nacional Autónoma de México (UNAM) - Instituto de Ecología"
+    },
+    "BOTTOM": {
+      "COPY": "© 2025 Reservas Naturales Protegidas de México | Todos los derechos reservados.",
+      "LEGAL": "Organización sin fines de lucro registrada. ID Fiscal: 86-0107049",
+      "SITEMAP": "Mapa del sitio",
+      "TERMS": "Términos de uso",
+      "PRIVACY": "Política de privacidad"
+    }
+  },
+  "ADMIN": {
+    "ADD_ANIMAL": {
+      "TITLE": "Agregar Nuevo Animal",
+      "FIELDS": {
+        "COMMON_NAME": {
+          "LABEL": "Nombre Común",
+          "PLACEHOLDER": "Ej. Jaguar",
+          "ERRORS": {
+            "REQUIRED": "El nombre es obligatorio.",
+            "MIN": "Mínimo 2 caracteres.",
+            "MAX": "Máximo 50 caracteres."
+          }
+        },
+        "SCIENTIFIC_NAME": {
+          "LABEL": "Nombre Científico (Opcional)",
+          "PLACEHOLDER": "Ej. Panthera onca",
+          "ERRORS": {
+            "MAX": "Máximo 80 caracteres."
+          }
+        },
+        "EXTINCTION": {
+          "LEGEND": "¿En Peligro de Extinción?",
+          "OPTIONS": {
+            "YES": "Sí",
+            "NO": "No"
+          },
+          "ERROR": "Selecciona una opción."
+        },
+        "IMAGE": {
+          "LABEL": "Imagen del Animal",
+          "ERRORS": {
+            "REQUIRED": "La imagen es obligatoria.",
+            "TYPE": "El archivo debe ser una imagen."
+          }
+        },
+        "ZONE": {
+          "LABEL": "Zona Protegida",
+          "PLACEHOLDER": "Selecciona una zona",
+          "ERROR": "Debes seleccionar una zona."
+        }
+      },
+      "ACTIONS": {
+        "SAVE": "Guardar Información"
+      },
+      "MESSAGES": {
+        "FORM_ERROR": "Por favor, corrige los errores del formulario.",
+        "SUCCESS": "¡Animal agregado exitosamente!",
+        "ERROR": "Error al agregar el animal."
+      }
+    },
+    "MANAGE_ANIMALS": {
+      "TITLE": "Lista de Fauna",
+      "SEARCH_PLACEHOLDER": "🔍 Buscar por nombre o especie...",
+      "STATUS": {
+        "ENDANGERED": "En Peligro",
+        "STABLE": "Estable"
+      },
+      "NO_ZONE": "Sin Zona",
+      "EDIT": "Editar",
+      "NO_RESULTS": "No se encontraron animales."
+    },
+    "EDIT_ANIMAL": {
+      "TITLE": "Modificar Animal",
+      "FIELDS": {
+        "COMMON_NAME": {
+          "LABEL": "Nombre Común"
+        },
+        "SCIENTIFIC_NAME": {
+          "LABEL": "Nombre Científico"
+        },
+        "STATUS": {
+          "LEGEND": "Estado de Conservación",
+          "ENDANGERED": "En Peligro",
+          "STABLE": "Estable"
+        },
+        "ZONE": {
+          "LABEL": "Zona Protegida",
+          "PLACEHOLDER": "-- Selecciona Zona --"
+        },
+        "IMAGE": {
+          "LABEL": "Actualizar Imagen (Opcional)",
+          "HELP": "Si no seleccionas nada, se mantiene la imagen actual."
+        }
+      },
+      "ERRORS": {
+        "COMMON_NAME_REQUIRED": "El nombre es requerido."
+      },
+      "ACTIONS": {
+        "SAVE": "Guardar Cambios"
+      },
+      "MESSAGES": {
+        "SUCCESS": "¡Animal actualizado con éxito!",
+        "ERROR": "Error al actualizar. Intenta nuevamente.",
+        "NOT_FOUND": "Animal no encontrado.",
+        "LOAD_ERROR": "Error al cargar datos del animal."
+      },
+      "LOADING": "Cargando datos del animal..."
+    },
+    "CONTROL_PANEL": {
+      "HEADER": {
+        "TITLE": "Centro de Mando",
+        "SUBTITLE": "Panel de administración y monitoreo de zonas protegidas."
+      },
+      "WEATHER": {
+        "LOCATION": "Guadalajara, JAL"
+      },
+      "STATS": {
+        "USERS": "Usuarios Activos",
+        "SPECIES": "Especies Registradas",
+        "ALERTS": "Alertas de Zona",
+        "REQUESTS": "Solicitudes Pendientes",
+        "ALERTS_CHANGE": "Alta Prioridad"
+      },
+      "TOOLS": {
+        "TITLE": "Gestión Operativa",
+        "FAUNA": {
+          "TITLE": "Fauna",
+          "DESC": "Registrar especies"
+        },
+        "USERS": {
+          "TITLE": "Usuarios",
+          "DESC": "Control de acceso"
+        },
+        "ZONES": {
+          "TITLE": "Zonas",
+          "DESC": "Áreas geográficas"
+        },
+        "REPORTS": {
+          "TITLE": "Reportes",
+          "DESC": "Analítica y datos"
+        },
+        "RESEARCH": {
+          "TITLE": "Investigaciones",
+          "DESC": "Gestionar proyectos científicos"
+        },
+        "GALLERY": {
+          "TITLE": "Galería",
+          "DESC": "Próximamente"
+        }
+      },
+      "ACTIVITY": {
+        "TITLE": "Bitácora Reciente",
+        "ACTIONS": {
+          "UPDATED_RULES": "actualizó reglamento",
+          "REGISTERED_USER": "registró un nuevo usuario",
+          "CLIMATE_ALERT": "emitió una alerta climática"
+        },
+        "TARGETS": {
+          "SIERRA": "Sierra Negra",
+          "SYSTEM": "Sistema",
+          "NORTH_ZONE": "Zona Norte"
+        },
+        "TIME": {
+          "MINUTES": "Hace {{value}} min",
+          "HOURS": "Hace {{value}} horas"
+        },
+        "QUICK_ACTION": "Acción Rápida",
+        "QUICK_ACTION_ALERT": "Abriendo modal de creación rápida..."
+      }
+    },
+    "USER_MANAGEMENT": {
+      "TITLE": "Gestión de Usuarios",
+      "SEARCH_LABEL": "Buscar usuario por nombre o email",
+      "SEARCH_PLACEHOLDER": "Buscar por nombre o email...",
+      "TABLE": {
+        "ID": "ID",
+        "NAME": "Nombre",
+        "EMAIL": "Email",
+        "ROLE": "Rol",
+        "ACTIONS": "Acciones"
+      },
+      "BUTTONS": {
+        "DELETE": "Eliminar",
+        "MAKE_ADMIN": "Convertir en administrador"
+      },
+      "ROLES": {
+        "ADMIN": "Administrador",
+        "USER": "Usuario"
+      },
+      "MESSAGES": {
+        "LOAD_ERROR": "Error al cargar los usuarios. Intenta de nuevo.",
+        "SUCCESS_DELETE": "Usuario con ID {{id}} eliminado correctamente.",
+        "ERROR_DELETE": "Error al eliminar el usuario {{id}}. Intenta de nuevo.",
+        "NO_USERS": "No hay usuarios registrados.",
+        "NO_RESULTS": "No se encontraron usuarios que coincidan con \"{{term}}\".",
+        "SUCCESS_PROMOTE": "Usuario con ID {{id}} promovido a Administrador correctamente.",
+        "ERROR_PROMOTE": "Error al promover al usuario {{id}} a Administrador."
+      },
+      "CONFIRM_DELETE": "¿Estás seguro de que quieres eliminar al usuario con ID {{id}}?",
+      "CONFIRM_PROMOTE": "¿Promover al usuario con ID {{id}} a Administrador?"
+    },
+    "RESEARCH": {
+      "HEADER": {
+        "EYEBROW": "Laboratorio de datos",
+        "TITLE": "Gestión de Investigaciones",
+        "SUBTITLE": "Centraliza cada protocolo científico, controla permisos y mantiene actualizado el estatus de los proyectos activos."
+      },
+      "ACTIONS": {
+        "SYNC": "Sincronizar",
+        "EDIT": "Editar",
+        "COMPLETE": "Finalizar",
+        "DELETE": "Eliminar",
+        "CONFIRM_DELETE": "¿Eliminar \"{{title}}\"? Esta acción es permanente."
+      },
+      "FORM": {
+        "CREATE": "Nuevo registro",
+        "EDITING": "Modo edición",
+        "NEW_TITLE": "Crear investigación",
+        "EDIT_TITLE": "Actualizar investigación",
+        "CANCEL_EDIT": "Cancelar edición",
+        "FIELDS": {
+          "TITLE": "Título del proyecto",
+          "INSTITUTION": "Institución",
+          "LEAD": "Investigador principal",
+          "ZONE": "Zona protegida",
+          "START": "Fecha de inicio",
+          "STATUS": "Estado",
+          "PERMITS": "Permiso oficial",
+          "SUMMARY": "Resumen ejecutivo",
+          "PROGRESS": "Avance"
+        },
+        "PLACEHOLDERS": {
+          "TITLE": "Monitoreo de felinos en...",
+          "INSTITUTION": "CONANP · Unidad Norte",
+          "LEAD": "Dra. Fernanda Rojas",
+          "ZONE": "Reserva Sierra de San Pedro Mártir",
+          "SUMMARY": "Describe el objetivo y la metodología..."
+        },
+        "SAVE": "Guardar investigación",
+        "UPDATE": "Actualizar investigación"
+      },
+      "STATUS": {
+        "IN_PROGRESS": "En curso",
+        "PAUSED": "Pausado",
+        "COMPLETED": "Completado"
+      },
+      "FILTERS": {
+        "ALL": "Todos los estados"
+      },
+      "STATS": {
+        "ACTIVE": "Activas",
+        "PAUSED": "Pausadas",
+        "COMPLETED": "Terminadas"
+      },
+      "LIST": {
+        "SEARCH": "Buscar por título, institución o líder",
+        "LEAD": "Líder",
+        "START": "Inició",
+        "PERMIT": "Permiso",
+        "EMPTY": "No hay investigaciones que coincidan con los filtros.",
+        "LOADING": "Cargando investigaciones..."
+      }
+    }
+  }
+}

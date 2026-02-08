@@ -1,0 +1,300 @@
+
+:host {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000;
+  background-image: url('/assets/background10.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; 
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden; 
+}
+
+:host::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 1.5s ease; 
+}
+
+:host(.in-view)::before {
+  background: rgba(0,0,0,0.55);
+}
+
+:host > * {
+  position: relative;
+  z-index: 1;
+}
+
+.edu-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 80px;
+}
+
+/* Header */
+.edu-header {
+  text-align: center;
+  margin-bottom: 60px;
+  
+  /* Estado Inicial: Invisible y arriba */
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Estado Activo */
+:host(.in-view) .edu-header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.badge-pill {
+  display: inline-block;
+  background: rgba(0, 255, 255, 0.1);
+  color: #00ffff;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  padding: 5px 15px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.edu-header h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin: 0 0 15px 0;
+  background: linear-gradient(90deg, #fff, #999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.intro-text {
+  color: #ccc;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* Acordeón Interactivo */
+.interactive-deck {
+  display: flex;
+  gap: 15px;
+  height: 450px;
+  margin-bottom: 80px;
+}
+
+/* Tarjeta Base */
+.expand-card {
+  flex: 1;
+  position: relative;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s,
+              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease; /* Añadimos transform/opacity a la transición */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+  filter: grayscale(0.8) brightness(0.6);
+    opacity: 0;
+  transform: translateY(100px);
+}
+
+/*STAGGERING (Retraso en cascada)*/
+
+:host(.in-view) .expand-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Retrasos individuales para que no suban todas al mismo tiempo */
+:host(.in-view) .expand-card:nth-child(1) { transition-delay: 0.2s; }
+:host(.in-view) .expand-card:nth-child(2) { transition-delay: 0.4s; }
+:host(.in-view) .expand-card:nth-child(3) { transition-delay: 0.6s; }
+
+
+/* Efecto Hover */
+.expand-card:hover {
+  flex: 4;
+  filter: grayscale(0) brightness(1);
+  border-color: rgba(0, 255, 255, 0.4);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.card-icon-floating {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 2rem;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(5px);
+  width: 50px; height: 50px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+}
+
+.card-content {
+  z-index: 2;
+  transform: translateY(0);
+  transition: transform 0.4s;
+}
+
+.neon-subtitle {
+  color: #00ffff;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s 0.1s;
+}
+
+.expand-card h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.hidden-desc {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.hidden-desc p {
+  color: #ddd;
+  line-height: 1.5;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.expand-card:hover .neon-subtitle { opacity: 1; transform: translateY(0); }
+.expand-card:hover .hidden-desc { max-height: 200px; opacity: 1; }
+
+/* Widget Bio-Scanner */
+.bio-scanner-widget {
+  background: linear-gradient(135deg, rgba(20,20,20,0.8), rgba(10,10,10,0.9));
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+
+  /* Estado Inicial: Invisible y pequeño */
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-delay: 0.8s;
+}
+
+:host(.in-view) .bio-scanner-widget {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+.scanner-controls {
+  text-align: center;
+  min-width: 160px;
+}
+
+.radar-icon {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  animation: radarSpin 4s linear infinite;
+}
+
+@keyframes radarSpin { 
+  0% { transform: rotate(0deg); opacity: 0.5; } 
+  50% { opacity: 1; text-shadow: 0 0 15px #00ff88; } 
+  100% { transform: rotate(360deg); opacity: 0.5; } 
+}
+
+.scanner-controls h3 { margin: 0 0 15px 0; font-size: 1.1rem; color: #fff; }
+
+.btn-scan {
+  background: transparent;
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+.btn-scan:hover { background: #00ff88; color: #000; box-shadow: 0 0 15px rgba(0,255,136,0.3); }
+
+/* Pantalla de Datos */
+.scanner-screen {
+  flex: 1;
+  background: rgba(0, 255, 136, 0.05);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 12px;
+  padding: 25px;
+  position: relative;
+}
+
+.screen-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: monospace;
+  color: #00ff88;
+  font-size: 0.7rem;
+  margin-bottom: 15px;
+  opacity: 0.7;
+}
+
+.status-dot {
+  width: 8px; height: 8px; background: #00ff88; border-radius: 50%;
+  box-shadow: 0 0 5px #00ff88;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+.species-name {
+  margin: 0;
+  color: #fff;
+  font-size: 1.4rem;
+  font-family: 'Courier New', monospace;
+}
+
+.fact-text {
+  font-size: 1.1rem;
+  color: #ddd;
+  font-style: italic;
+  line-height: 1.5;
+  margin: 10px 0 20px;
+}
+
+@media (max-width: 768px) {
+  .interactive-deck { flex-direction: column; height: auto; }
+  .expand-card { height: 250px; flex: none; width: 100%; }
+  .expand-card:hover { flex: none; height: 350px; }
+  .bio-scanner-widget { flex-direction: column; padding: 20px; }
+  .scanner-controls { margin-bottom: 20px; }
+  .edu-header h1 { font-size: 2.5rem; }
+}

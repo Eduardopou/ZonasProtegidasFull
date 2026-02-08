@@ -1,0 +1,38 @@
+<header class="header">
+    <nav>
+        <a routerLink="/" class="logo-link">
+            <img src="assets/logo_grueso_blanco.png" alt="Logo_leona_con_flecha_y_arbol" class="logo">
+        </a>
+        <ul class="nav-list">
+            <li>
+                <app-languages></app-languages>
+            </li>
+            <li>
+                <app-eye-menu></app-eye-menu>
+            </li>
+            <!-- Mostrar "Iniciar sesión" solo si el usuario NO ha iniciado sesión -->
+            @if (!isLoggedIn()) {
+              <li>
+                  <a routerLink="/login" class="link">{{ 'LOGIN' | translate }}</a>
+              </li>
+            }
+            <!-- Mostrar panel admin solo si el usuario es admin -->
+            @if (authService.hasRole('ROLE_ADMIN')) {
+                <li>
+                    <button (click)="router.navigate(['/admin/page-control-panel-component'])" class="link">{{ 'ADMIN_PANEL' | translate }}</button>
+                </li>
+            }
+            <!-- Mostrar "Cerrar sesión" solo si el usuario SÍ ha iniciado sesión -->
+            @if (isLoggedIn()) {
+              <li>
+                  <button (click)="logout()" class="link" id="close">{{ 'LOGOUT' | translate }}</button>
+              </li>
+            }
+            <li>
+                <a routerLink="/profile" class="nav-icon-link">
+                    <img src="assets/menu_logo.png" alt="{{ 'MENU' | translate }}">
+                </a> 
+            </li>
+        </ul>
+    </nav>
+</header>

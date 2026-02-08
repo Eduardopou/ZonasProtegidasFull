@@ -1,0 +1,476 @@
+{
+  "LANGUAGE_MENU_TITLE": "Language",
+  "LANGUAGE_SPANISH": "Spanish",
+  "LANGUAGE_ENGLISH": "English",
+  "LOGIN": "Log in",
+  "ADMIN_PANEL": "Admin panel",
+  "LOGOUT": "Log out",
+  "MENU": "Menu",
+  "COMMON": {
+    "CLOSE": "Close",
+    "CANCEL": "Cancel",
+    "SELECT": "Select",
+    "PREV": "Previous",
+    "NEXT": "Next"
+  },
+  "HOME": {
+    "HERO_SUBTITLE": "Caring for Mexico",
+    "HERO_TITLE": "Protected Reserves",
+    "CHOOSE_RESERVE": "Choose a reserve +",
+    "ZONAS_DIALOG": {
+      "TITLE": "Available Reserves",
+      "DESCRIPTION": "Select a reserve to see more details."
+    }
+  },
+  "INTRO": {
+    "BADGE": "Official Portal",
+    "TITLE": "Explore Natural Mexico",
+    "DESCRIPTION": "An educational platform that connects you with natural heritage. Official data, real-time biodiversity, and conservation projects for students and explorers.",
+    "JOIN_MISSION": "Join the Mission",
+    "EXPLORE_MAP": "Explore Map",
+    "PROTECTED_ZONE": "Protected Zone",
+    "DISCOVER_RANDOM": "Discover at random"
+  },
+  "PROTECTED_AREAS": "Protected Areas",
+  "REGISTERED_SPECIES": "Registered Species",
+  "STATES": "States",
+  "EDU": {
+    "BADGE": "Virtual Classroom",
+    "TITLE": "Learn, Protect, and Care",
+    "INTRO": "Protected Natural Areas are living libraries where every species is a unique story. Discover how we classify these sanctuaries.",
+    "CAT": {
+      "BIO": {
+        "TITLE": "Biosphere Reserves",
+        "SUBTITLE": "Global Balance",
+        "DESC": "Areas of worldwide relevance that seek harmony between biodiversity conservation and sustainable human development."
+      },
+      "PARK": {
+        "TITLE": "National Parks",
+        "SUBTITLE": "Scenic Treasures",
+        "DESC": "Zones protected for their scenic beauty, scientific, and historic value. Tourism is allowed, but resource extraction is banned."
+      },
+      "FLORA": {
+        "TITLE": "Protection Areas",
+        "SUBTITLE": "Life Sanctuaries",
+        "DESC": "Places dedicated to safeguarding endemic, rare, or endangered species and their critical habitats."
+      }
+    },
+    "FIELD_DATA": "Field Data",
+    "SCAN_NEXT": "Scan Next",
+    "RECORD": "RECORD",
+    "FACTS": {
+      "JAGUAR": "The jaguar has the strongest bite among felines and can pierce turtle shells.",
+      "OAK": "A single oak tree can absorb up to 150 kg of CO₂ per year, purifying the air.",
+      "MEXICAN_WOLF": "The Mexican wolf is the smallest wolf subspecies in North America and was once extinct in the wild.",
+      "MANGLAR": "Mangroves shield coasts from hurricanes and serve as nurseries for 70% of marine fish."
+    }
+  },
+  "SEARCH": {
+    "TITLE": "Explore Mexico's Protected Areas",
+    "SELECT_STATE_ARIA": "Select a state",
+    "ALL_STATES": "All states",
+    "VIEW_MAP": "View Map"
+  },
+  "PROFILE": {
+    "ID_CARD_TITLE": "PROTECTED ZONES • OFFICIAL ID",
+    "LOADING": "Loading credentials...",
+    "IMAGE_ALT": "Profile photo",
+    "CHANGE_PHOTO": "Change",
+    "NAME_PLACEHOLDER": "Your name",
+    "ROLE_TITLE": "Rank / Role",
+    "EMAIL_TITLE": "Identifier (Email)",
+    "BUTTONS": {
+      "CANCEL": "✖ Cancel",
+      "EDIT": "✎ Edit Data",
+      "SAVE": "💾 Save Changes"
+    },
+    "JOURNAL": {
+      "TITLE": "My Sightings Collection",
+      "SUBTITLE": "Species saved in your personal logbook.",
+      "EMPTY_TITLE": "Your logbook is empty.",
+      "EMPTY_HINT": "Explore zones and save species to see them here.",
+      "VIEW_CARD": "View Sheet",
+      "REMOVE_TITLE": "Remove from collection",
+      "CONFIRM_REMOVE": "Are you sure you want to remove this animal from your favorites?",
+      "VIEW_MORE_TODO": "'View More' function not implemented yet."
+    },
+    "ERRORS": {
+      "LOAD_PROFILE": "Error loading profile.",
+      "LOAD_FAVORITES": "Error loading favorites.",
+      "SAVE_PROFILE": "Error saving. Please verify your data.",
+      "UPLOAD_IMAGE": "Error uploading image.",
+      "REMOVE_FAVORITE": "Error removing favorite."
+    }
+  },
+  "RESERVE": {
+    "TAB": {
+      "ANIMALS": "Animals",
+      "RESEARCH": "Research",
+      "RULES": "Rules",
+      "EXPERIENCES": "Experiences",
+      "MAP": "Map"
+    },
+    "ANIMALS": {
+      "TITLE": "Fauna in the zone",
+      "SUBTITLE": "Explore the animals registered in this reserve",
+      "LOADING": "Loading animals...",
+      "ADD_FAVORITE": "Add to favorites",
+      "ENDANGERED": "Endangered",
+      "NO_RESULTS": "No animals were found for this zone.",
+      "VIEW_DETAILS": "View details for {{name}}",
+      "ADD_FAVORITE_SUCCESS": "Added to favorites ✔",
+      "ADD_FAVORITE_ERROR": "There was an error adding to favorites"
+    },
+    "RESEARCH": {
+      "TITLE": "Research Projects",
+      "SUBTITLE": "Scientific transparency and active monitoring within the reserve.",
+      "LOADING": "Loading National Research System data...",
+      "PERMIT_LABEL": "Permit:",
+      "PERMIT_TITLE": "Official Permit Number",
+      "REGISTER_DATE": "Registration date:",
+      "PROJECT_PHASE": "Project phase",
+      "VIEW_DOCS": "View Documentation",
+      "NO_RESULTS": "No active research was found for this zone."
+    },
+    "RULES": {
+      "TITLE": "Rules and Coexistence",
+      "SUBTITLE": "These rules keep the area protected and ensure your safety.",
+      "LEGAL_NOTICE": "Regulated by the General Law of Ecological Balance and Environmental Protection.",
+      "LOADING": "Loading current regulations...",
+      "REF": "Ref:",
+      "SANCTION": "Sanction:",
+      "DOWNLOAD_PDF": "Download Official Rules (PDF)"
+    },
+    "ACTIVITIES": {
+      "TITLE": "Nature Experiences",
+      "SUBTITLE": "Discover, explore, and connect. Pick your next adventure.",
+      "LOADING": "Looking for available adventures...",
+      "REQUIRES_GUIDE": "Guide Required",
+      "FREE": "Free",
+      "CONTACT_GUIDE": "Contact Guide",
+      "VIEW_ROUTE": "View Route",
+      "NO_RESULTS": "No activities are registered for this season."
+    },
+    "MAP": {
+      "TITLE": "Zone map"
+    },
+    "AI": {
+      "INSIGHTS": "Gemini AI Insights",
+      "VIEW_FULL_CARD": "View Full Technical Sheet",
+      "MISSING_DATA": "Incomplete animal data.",
+      "FALLBACK_ZONE": "this reserve in Mexico",
+      "PROMPT": "Act as a biology expert. Write a fun fact (max 80 words) about the animal \"{{animalName}}\" (Scientific name: {{scientificName}}) that inhabits the zone \"{{zoneName}}\". Keep the tone educational. Do not mention yourself; only provide the answer.",
+      "NO_DATA": "We couldn't obtain information right now.",
+      "UNAVAILABLE": "AI is not responding at the moment."
+    }
+  },
+  "CONTACT": {
+    "LOGO_ALT": "Protected Natural Reserves logo",
+    "SOCIAL": {
+      "FACEBOOK": "Open Facebook",
+      "INSTAGRAM": "Open Instagram",
+      "TIKTOK": "Open TikTok",
+      "GMAIL": "Send email"
+    },
+    "DESCRIPTION": "Discover, protect, and connect with Mexico's Protected Natural Areas. We inform, inspire, and promote sustainable actions to safeguard biodiversity.",
+    "LINKS": {
+      "ABOUT": {
+        "TITLE": "About Us",
+        "MISSION": "Mission",
+        "HISTORY": "History",
+        "TEAM": "Team",
+        "CONTACT": "Contact"
+      },
+      "ACTIONS": {
+        "TITLE": "Actions",
+        "CAMPAIGNS": "Campaigns",
+        "EDUCATION": "Environmental Education",
+        "VOLUNTEER": "Volunteering",
+        "COLLABORATE": "Collaborate"
+      },
+      "PROJECTS": {
+        "TITLE": "Projects",
+        "ZONES": "Protected Zones",
+        "RESEARCH": "Research",
+        "MAPS": "Interactive Maps",
+        "REPORTS": "Reports"
+      },
+      "DONATIONS": {
+        "TITLE": "Donations",
+        "SUPPORT": "Support a Reserve",
+        "TRANSPARENCY": "Transparency",
+        "SPONSORSHIPS": "Sponsorships",
+        "GREEN_SHOP": "Green Store"
+      }
+    },
+    "SOURCES": {
+      "TITLE": "Information Sources",
+      "SEMARNAT": "Ministry of Environment and Natural Resources (SEMARNAT)",
+      "CONANP": "National Commission of Protected Natural Areas (CONANP)",
+      "ATLAS": "Environmental Atlas of Mexico - 2025 Edition",
+      "MAGAZINE": "Conserva México Magazine, Vol. 12",
+      "UNAM": "National Autonomous University of Mexico (UNAM) - Ecology Institute"
+    },
+    "BOTTOM": {
+      "COPY": "© 2025 Mexico's Protected Natural Reserves | All rights reserved.",
+      "LEGAL": "Registered nonprofit organization. Tax ID: 86-0107049",
+      "SITEMAP": "Site map",
+      "TERMS": "Terms of use",
+      "PRIVACY": "Privacy policy"
+    }
+  },
+  "ADMIN": {
+    "ADD_ANIMAL": {
+      "TITLE": "Add New Animal",
+      "FIELDS": {
+        "COMMON_NAME": {
+          "LABEL": "Common Name",
+          "PLACEHOLDER": "Ex. Jaguar",
+          "ERRORS": {
+            "REQUIRED": "Name is required.",
+            "MIN": "At least 2 characters.",
+            "MAX": "Maximum 50 characters."
+          }
+        },
+        "SCIENTIFIC_NAME": {
+          "LABEL": "Scientific Name (Optional)",
+          "PLACEHOLDER": "Ex. Panthera onca",
+          "ERRORS": {
+            "MAX": "Maximum 80 characters."
+          }
+        },
+        "EXTINCTION": {
+          "LEGEND": "Is it endangered?",
+          "OPTIONS": {
+            "YES": "Yes",
+            "NO": "No"
+          },
+          "ERROR": "Choose an option."
+        },
+        "IMAGE": {
+          "LABEL": "Animal Image",
+          "ERRORS": {
+            "REQUIRED": "Image is required.",
+            "TYPE": "The file must be an image."
+          }
+        },
+        "ZONE": {
+          "LABEL": "Protected Zone",
+          "PLACEHOLDER": "Select a zone",
+          "ERROR": "You must select a zone."
+        }
+      },
+      "ACTIONS": {
+        "SAVE": "Save Information"
+      },
+      "MESSAGES": {
+        "FORM_ERROR": "Please fix the form errors.",
+        "SUCCESS": "Animal added successfully!",
+        "ERROR": "Error while adding the animal."
+      }
+    },
+    "MANAGE_ANIMALS": {
+      "TITLE": "Fauna List",
+      "SEARCH_PLACEHOLDER": "🔍 Search by name or species...",
+      "STATUS": {
+        "ENDANGERED": "Endangered",
+        "STABLE": "Stable"
+      },
+      "NO_ZONE": "No Zone",
+      "EDIT": "Edit",
+      "NO_RESULTS": "No animals found."
+    },
+    "EDIT_ANIMAL": {
+      "TITLE": "Edit Animal",
+      "FIELDS": {
+        "COMMON_NAME": {
+          "LABEL": "Common Name"
+        },
+        "SCIENTIFIC_NAME": {
+          "LABEL": "Scientific Name"
+        },
+        "STATUS": {
+          "LEGEND": "Conservation Status",
+          "ENDANGERED": "Endangered",
+          "STABLE": "Stable"
+        },
+        "ZONE": {
+          "LABEL": "Protected Zone",
+          "PLACEHOLDER": "-- Select Zone --"
+        },
+        "IMAGE": {
+          "LABEL": "Update Image (Optional)",
+          "HELP": "If you skip this field, the current image will remain."
+        }
+      },
+      "ERRORS": {
+        "COMMON_NAME_REQUIRED": "Name is required."
+      },
+      "ACTIONS": {
+        "SAVE": "Save Changes"
+      },
+      "MESSAGES": {
+        "SUCCESS": "Animal updated successfully!",
+        "ERROR": "Could not update. Try again.",
+        "NOT_FOUND": "Animal not found.",
+        "LOAD_ERROR": "Error loading animal data."
+      },
+      "LOADING": "Loading animal details..."
+    },
+    "CONTROL_PANEL": {
+      "HEADER": {
+        "TITLE": "Command Center",
+        "SUBTITLE": "Administration and monitoring panel for protected zones."
+      },
+      "WEATHER": {
+        "LOCATION": "Guadalajara, JAL"
+      },
+      "STATS": {
+        "USERS": "Active Users",
+        "SPECIES": "Registered Species",
+        "ALERTS": "Zone Alerts",
+        "REQUESTS": "Pending Requests",
+        "ALERTS_CHANGE": "High Priority"
+      },
+      "TOOLS": {
+        "TITLE": "Operational Management",
+        "FAUNA": {
+          "TITLE": "Fauna",
+          "DESC": "Register species"
+        },
+        "USERS": {
+          "TITLE": "Users",
+          "DESC": "Access control"
+        },
+        "ZONES": {
+          "TITLE": "Zones",
+          "DESC": "Geographic areas"
+        },
+        "REPORTS": {
+          "TITLE": "Reports",
+          "DESC": "Analytics and data"
+        },
+        "RESEARCH": {
+          "TITLE": "Research Lab",
+          "DESC": "Create, update and retire studies"
+        },
+        "GALLERY": {
+          "TITLE": "Gallery",
+          "DESC": "Coming soon"
+        }
+      },
+      "ACTIVITY": {
+        "TITLE": "Recent Log",
+        "ACTIONS": {
+          "UPDATED_RULES": "updated regulations",
+          "REGISTERED_USER": "registered a new user",
+          "CLIMATE_ALERT": "issued a climate alert"
+        },
+        "TARGETS": {
+          "SIERRA": "Sierra Negra",
+          "SYSTEM": "System",
+          "NORTH_ZONE": "Northern Zone"
+        },
+        "TIME": {
+          "MINUTES": "{{value}} min ago",
+          "HOURS": "{{value}} hours ago"
+        },
+        "QUICK_ACTION": "Quick Action",
+        "QUICK_ACTION_ALERT": "Opening quick creation modal..."
+      }
+    },
+    "USER_MANAGEMENT": {
+      "TITLE": "User Management",
+      "SEARCH_LABEL": "Search user by name or email",
+      "SEARCH_PLACEHOLDER": "Search by name or email...",
+      "TABLE": {
+        "ID": "ID",
+        "NAME": "Name",
+        "EMAIL": "Email",
+        "ROLE": "Role",
+        "ACTIONS": "Actions"
+      },
+      "BUTTONS": {
+        "DELETE": "Delete",
+        "MAKE_ADMIN": "Grant admin role"
+      },
+      "ROLES": {
+        "ADMIN": "Administrator",
+        "USER": "User"
+      },
+      "MESSAGES": {
+        "LOAD_ERROR": "Couldn't load users. Please try again.",
+        "SUCCESS_DELETE": "User with ID {{id}} deleted successfully.",
+        "ERROR_DELETE": "Error deleting user {{id}}. Please try again.",
+        "NO_USERS": "There are no registered users.",
+        "NO_RESULTS": "No users match \"{{term}}\".",
+        "SUCCESS_PROMOTE": "User with ID {{id}} promoted to Administrator successfully.",
+        "ERROR_PROMOTE": "Error promoting user {{id}} to Administrator."
+      },
+      "CONFIRM_DELETE": "Are you sure you want to delete the user with ID {{id}}?",
+      "CONFIRM_PROMOTE": "Promote user with ID {{id}} to Administrator?"
+    },
+    "RESEARCH": {
+      "HEADER": {
+        "EYEBROW": "Data Lab",
+        "TITLE": "Research Operations",
+        "SUBTITLE": "Coordinate scientific protocols, keep permits aligned, and maintain a transparent status board for every active investigation."
+      },
+      "ACTIONS": {
+        "SYNC": "Sync board",
+        "EDIT": "Edit",
+        "COMPLETE": "Mark as finished",
+        "DELETE": "Remove",
+        "CONFIRM_DELETE": "Remove \"{{title}}\"? This action cannot be undone."
+      },
+      "FORM": {
+        "CREATE": "New entry",
+        "EDITING": "Editing mode",
+        "NEW_TITLE": "Create investigation",
+        "EDIT_TITLE": "Update investigation",
+        "CANCEL_EDIT": "Cancel edit",
+        "FIELDS": {
+          "TITLE": "Project title",
+          "INSTITUTION": "Institution",
+          "LEAD": "Principal investigator",
+          "ZONE": "Protected zone",
+          "START": "Start date",
+          "STATUS": "Status",
+          "PERMITS": "Official permit",
+          "SUMMARY": "Executive summary",
+          "PROGRESS": "Progress"
+        },
+        "PLACEHOLDERS": {
+          "TITLE": "Felid monitoring in...",
+          "INSTITUTION": "CONANP · North Unit",
+          "LEAD": "Dr. Fernanda Rojas",
+          "ZONE": "Sierra de San Pedro Mártir Reserve",
+          "SUMMARY": "Describe the objective and methodology..."
+        },
+        "SAVE": "Save investigation",
+        "UPDATE": "Update investigation"
+      },
+      "STATUS": {
+        "IN_PROGRESS": "In progress",
+        "PAUSED": "Paused",
+        "COMPLETED": "Completed"
+      },
+      "FILTERS": {
+        "ALL": "All statuses"
+      },
+      "STATS": {
+        "ACTIVE": "Active",
+        "PAUSED": "Paused",
+        "COMPLETED": "Closed"
+      },
+      "LIST": {
+        "SEARCH": "Search by title, institution or lead",
+        "LEAD": "Lead",
+        "START": "Started",
+        "PERMIT": "Permit",
+        "EMPTY": "No investigations match the current filters.",
+        "LOADING": "Loading investigations..."
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+<div class="form-card">
+  <h1>{{ 'ADMIN.ADD_ANIMAL.TITLE' | translate }}</h1>
+
+  <form [formGroup]="animalForm" (ngSubmit)="post_animal()" novalidate>
+
+    <div class="form-group">
+      <label for="name">{{ 'ADMIN.ADD_ANIMAL.FIELDS.COMMON_NAME.LABEL' | translate }}</label>
+      <input 
+        type="text" 
+        id="name" 
+        formControlName="name" 
+        [placeholder]="'ADMIN.ADD_ANIMAL.FIELDS.COMMON_NAME.PLACEHOLDER' | translate"
+        [class.is-invalid]="name?.invalid && (name?.dirty || name?.touched)">
+      
+      @if (name?.invalid && (name?.dirty || name?.touched)) {
+        <div class="error-feedback">
+          @if (name?.errors?.['required']) { <small>{{ 'ADMIN.ADD_ANIMAL.FIELDS.COMMON_NAME.ERRORS.REQUIRED' | translate }}</small> }
+          @if (name?.errors?.['minlength']) { <small>{{ 'ADMIN.ADD_ANIMAL.FIELDS.COMMON_NAME.ERRORS.MIN' | translate }}</small> }
+          @if (name?.errors?.['maxlength']) { <small>{{ 'ADMIN.ADD_ANIMAL.FIELDS.COMMON_NAME.ERRORS.MAX' | translate }}</small> }
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="scientificName">{{ 'ADMIN.ADD_ANIMAL.FIELDS.SCIENTIFIC_NAME.LABEL' | translate }}</label>
+      <input 
+        type="text" 
+        id="scientificName" 
+        formControlName="scientificName" 
+        [placeholder]="'ADMIN.ADD_ANIMAL.FIELDS.SCIENTIFIC_NAME.PLACEHOLDER' | translate"
+        [class.is-invalid]="scientificName?.invalid && (scientificName?.dirty || scientificName?.touched)">
+      
+      @if (scientificName?.errors?.['maxlength']) {
+        <div class="error-feedback"><small>{{ 'ADMIN.ADD_ANIMAL.FIELDS.SCIENTIFIC_NAME.ERRORS.MAX' | translate }}</small></div>
+      }
+    </div>
+
+    <div class="form-group">
+      <fieldset [class.is-invalid]="extinction?.invalid && (extinction?.dirty || extinction?.touched)">
+        <legend>{{ 'ADMIN.ADD_ANIMAL.FIELDS.EXTINCTION.LEGEND' | translate }}</legend>
+        <div class="radio-group">
+          <label>
+            <input type="radio" formControlName="extinction" [value]="true"> {{ 'ADMIN.ADD_ANIMAL.FIELDS.EXTINCTION.OPTIONS.YES' | translate }}
+          </label>
+          <label>
+            <input type="radio" formControlName="extinction" [value]="false"> {{ 'ADMIN.ADD_ANIMAL.FIELDS.EXTINCTION.OPTIONS.NO' | translate }}
+          </label>
+        </div>
+      </fieldset>
+      
+      @if (extinction?.invalid && (extinction?.dirty || extinction?.touched)) {
+        <div class="error-feedback"><small>{{ 'ADMIN.ADD_ANIMAL.FIELDS.EXTINCTION.ERROR' | translate }}</small></div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="file">{{ 'ADMIN.ADD_ANIMAL.FIELDS.IMAGE.LABEL' | translate }}</label>
+      <input 
+        type="file" 
+        id="file" 
+        (change)="onFileChange($event)" 
+        accept="image/*" 
+        [class.is-invalid]="file?.invalid && (file?.dirty || file?.touched)">
+        
+      @if (file?.invalid && (file?.dirty || file?.touched)) {
+        <div class="error-feedback">
+          @if (file?.errors?.['required']) { <small>{{ 'ADMIN.ADD_ANIMAL.FIELDS.IMAGE.ERRORS.REQUIRED' | translate }}</small> }
+          @if (file?.errors?.['invalidType']) { <small>{{ 'ADMIN.ADD_ANIMAL.FIELDS.IMAGE.ERRORS.TYPE' | translate }}</small> }
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="zonaProtegidaId">{{ 'ADMIN.ADD_ANIMAL.FIELDS.ZONE.LABEL' | translate }}</label>
+      <select 
+        id="zonaProtegidaId" 
+        formControlName="zonaProtegidaId" 
+        [class.is-invalid]="zonaProtegidaId?.invalid && (zonaProtegidaId?.dirty || zonaProtegidaId?.touched)">
+        
+        <option [ngValue]="null" disabled>{{ 'ADMIN.ADD_ANIMAL.FIELDS.ZONE.PLACEHOLDER' | translate }}</option>
+        
+        @for (zona of zonas; track zona.id) {
+          <option [ngValue]="zona.id">{{ zona.nombre }}</option>
+        }
+      </select>
+      
+      @if (zonaProtegidaId?.invalid && (zonaProtegidaId?.dirty || zonaProtegidaId?.touched)) {
+        <div class="error-feedback"><small>{{ 'ADMIN.ADD_ANIMAL.FIELDS.ZONE.ERROR' | translate }}</small></div>
+      }
+    </div>
+
+    <button type="submit" class="save-btn" [disabled]="animalForm.invalid">
+      {{ 'ADMIN.ADD_ANIMAL.ACTIONS.SAVE' | translate }}
+    </button>
+  </form>
+
+  @if (successMessage) {
+    <div class="message success-message" style="margin-top: 20px; color: #4caf50; text-align: center; font-weight:bold;">
+      ✔️ {{ successMessage }}
+    </div>
+  }
+  @if (errorMessage) {
+    <div class="message error-message" style="margin-top: 20px; color: #ff8080; text-align: center; font-weight:bold;">
+      ❌ {{ errorMessage }}
+    </div>
+  }
+
+
+</div>
+
+
+
+

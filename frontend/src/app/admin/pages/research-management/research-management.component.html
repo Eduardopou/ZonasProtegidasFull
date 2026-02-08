@@ -1,0 +1,175 @@
+<app-header-page></app-header-page>
+<app-back-button [floating]="true"></app-back-button>
+
+<section class="research-shell">
+  <header class="hero">
+    <div>
+      <h1>{{ 'ADMIN.RESEARCH.HEADER.TITLE' | translate }}</h1>
+      <p class="subtitle">{{ 'ADMIN.RESEARCH.HEADER.SUBTITLE' | translate }}</p>
+    </div>
+    <button type="button" class="refresh" (click)="loadInvestigations()" [disabled]="isLoadingList()">
+      <span class="icon">⟳</span>
+      <span>{{ 'ADMIN.RESEARCH.ACTIONS.SYNC' | translate }}</span>
+    </button>
+  </header>
+  <div class="grid">
+    <section class="panel form-panel">
+      <div class="panel-header">
+        <div>
+          <p class="chip">{{ editingId ? ('ADMIN.RESEARCH.FORM.EDITING' | translate) : ('ADMIN.RESEARCH.FORM.CREATE' | translate) }}</p>
+          <h2>{{ editingId ? ('ADMIN.RESEARCH.FORM.EDIT_TITLE' | translate) : ('ADMIN.RESEARCH.FORM.NEW_TITLE' | translate) }}</h2>
+        </div>
+        <button type="button" class="ghost" (click)="resetForm()" *ngIf="editingId">
+          {{ 'ADMIN.RESEARCH.FORM.CANCEL_EDIT' | translate }}
+        </button>
+      </div>
+      <form [formGroup]="researchForm" (ngSubmit)="submitForm()" class="form-body">
+        <div class="form-grid">
+          <label>
+            <span>{{ 'ADMIN.RESEARCH.FORM.FIELDS.TITLE' | translate }}</span>
+            <input type="text" formControlName="titulo" [class.invalid]="titulo?.invalid && titulo?.touched" placeholder="{{ 'ADMIN.RESEARCH.FORM.PLACEHOLDERS.TITLE' | translate }}">
+          </label>
+
+          <label>
+            <span>{{ 'ADMIN.RESEARCH.FORM.FIELDS.INSTITUTION' | translate }}</span>
+            <input type="text" formControlName="institucion" placeholder="{{ 'ADMIN.RESEARCH.FORM.PLACEHOLDERS.INSTITUTION' | translate }}">
+          </label>
+
+          <label>
+            <span>{{ 'ADMIN.RESEARCH.FORM.FIELDS.LEAD' | translate }}</span>
+            <input type="text" formControlName="investigadorPrincipal" placeholder="{{ 'ADMIN.RESEARCH.FORM.PLACEHOLDERS.LEAD' | translate }}">
+          </label>
+
+          <label>
+            <span>{{ 'ADMIN.RESEARCH.FORM.FIELDS.ZONE' | translate }}</span>
+            <input type="text" formControlName="zonaProtegidaNombre" placeholder="{{ 'ADMIN.RESEARCH.FORM.PLACEHOLDERS.ZONE' | translate }}">
+          </label>
+
+          <label>
+            <span>{{ 'ADMIN.RESEARCH.FORM.FIELDS.START' | translate }}</span>
+            <input type="date" formControlName="fechaInicio">
+          </label>
+
+          <label>
+            <span>{{ 'ADMIN.RESEARCH.FORM.FIELDS.STATUS' | translate }}</span>
+            <select formControlName="estado">
+              <option *ngFor="let status of statusOptions" [value]="status.value">
+                {{ status.labelKey | translate }}
+              </option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          <span>{{ 'ADMIN.RESEARCH.FORM.FIELDS.PERMITS' | translate }}</span>
+          <input type="text" formControlName="permisosGobierno" placeholder="MX-GOV-0922">
+        </label>
+
+        <label>
+          <span>{{ 'ADMIN.RESEARCH.FORM.FIELDS.SUMMARY' | translate }}</span>
+          <textarea rows="4" formControlName="resumen" [class.invalid]="resumen?.invalid && resumen?.touched" placeholder="{{ 'ADMIN.RESEARCH.FORM.PLACEHOLDERS.SUMMARY' | translate }}"></textarea>
+        </label>
+
+        <div class="range-field">
+          <div>
+            <span>{{ 'ADMIN.RESEARCH.FORM.FIELDS.PROGRESS' | translate }}</span>
+            <strong>{{ researchForm.value.progreso || 0 }}%</strong>
+          </div>
+          <input type="range" formControlName="progreso" min="0" max="100">
+        </div>
+
+        <button class="save" type="submit" [disabled]="isSaving()">
+          <span>{{ editingId ? ('ADMIN.RESEARCH.FORM.UPDATE' | translate) : ('ADMIN.RESEARCH.FORM.SAVE' | translate) }}</span>
+        </button>
+      </form>
+    </section>
+
+    <section class="panel list-panel">
+      <div class="filters">
+        <div class="search"> <input 
+          type="text" 
+          [value]="searchTerm()" 
+          (input)="onSearchChange($any($event.target).value)" 
+          placeholder="{{ 'ADMIN.RESEARCH.LIST.SEARCH' | translate }}"
+          
+          [attr.aria-label]="'ADMIN.RESEARCH.LIST.SEARCH' | translate"
+        > 
+        </div>
+
+        <select 
+          [value]="statusFilter()" 
+          (change)="onStatusChange($any($event.target).value)"
+          aria-label="Filtrar por estado"
+        >
+        <option value="ALL">{{ 'ADMIN.RESEARCH.FILTERS.ALL' | translate }}</option>
+          <option *ngFor="let status of statusOptions" [value]="status.value">{{ status.labelKey | translate }}</option>
+        </select>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <p>{{ 'ADMIN.RESEARCH.STATS.ACTIVE' | translate }}</p>
+          <strong>{{ getTotalByStatus('EN_CURSO') }}</strong>
+        </div>
+        <div class="stat">
+          <p>{{ 'ADMIN.RESEARCH.STATS.PAUSED' | translate }}</p>
+          <strong>{{ getTotalByStatus('PAUSADO') }}</strong>
+        </div>
+        <div class="stat">
+          <p>{{ 'ADMIN.RESEARCH.STATS.COMPLETED' | translate }}</p>
+          <strong>{{ getTotalByStatus('COMPLETADO') }}</strong>
+        </div>
+      </div>
+
+      <div class="list" *ngIf="!isLoadingList(); else loading">
+        <article class="item" *ngFor="let item of filteredInvestigations()">
+          <div class="item-header">
+            <div>
+              <h3>{{ item.titulo }}</h3>
+              <p>{{ item.institucion }} • {{ item.zonaProtegidaNombre }}</p>
+            </div>
+            <span class="badge" [ngClass]="item.estado.toLowerCase()">{{ item.estado }}</span>
+          </div>
+
+          <p class="lead">
+            {{ 'ADMIN.RESEARCH.LIST.LEAD' | translate }} {{ item.investigadorPrincipal }}
+          </p>
+
+          <p class="summary">{{ item.resumen }}</p>
+
+          <div class="meta">
+            <span>{{ 'ADMIN.RESEARCH.LIST.START' | translate }} {{ item.fechaInicio | date }}</span>
+            <span>{{ 'ADMIN.RESEARCH.LIST.PERMIT' | translate }} {{ item.permisosGobierno }}</span>
+          </div>
+
+          <div class="progress" [ngClass]="getProgressClass(item.progreso)">
+            <div class="track">
+              <div class="fill" [style.width.%]="item.progreso"></div>
+            </div>
+            <span>{{ item.progreso }}%</span>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="ghost" (click)="editInvestigation(item)">{{ 'ADMIN.RESEARCH.ACTIONS.EDIT' | translate }}</button>
+            <button type="button" class="outline" (click)="completeInvestigation(item)" [disabled]="item.estado === 'COMPLETADO'">
+              {{ 'ADMIN.RESEARCH.ACTIONS.COMPLETE' | translate }}
+            </button>
+            <button type="button" class="danger" (click)="deleteInvestigation(item)">{{ 'ADMIN.RESEARCH.ACTIONS.DELETE' | translate }}</button>
+          </div>
+        </article>
+
+        <p class="empty" *ngIf="filteredInvestigations().length === 0">
+          {{ 'ADMIN.RESEARCH.LIST.EMPTY' | translate }}
+        </p>
+      </div>
+    </section>
+  </div>
+</section>
+
+<ng-template #loading>
+  <div class="loading">
+    <span class="spinner"></span>
+    {{ 'ADMIN.RESEARCH.LIST.LOADING' | translate }}
+  </div>
+</ng-template>
+

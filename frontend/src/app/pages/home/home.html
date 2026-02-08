@@ -1,0 +1,21 @@
+<app-header-page></app-header-page>
+
+<section class="hero-section">
+  <div class="hero-content">
+    <h6 class="subtitle">{{ 'HOME.HERO_SUBTITLE' | translate }}</h6>
+    <h1 class="main-title">{{ 'HOME.HERO_TITLE' | translate }}</h1>
+  </div>
+
+  <a (click)="openZonasDialog()" class="cta-button" role="button">
+    {{ 'HOME.CHOOSE_RESERVE' | translate }}
+  </a>
+</section>
+
+<app-introduction-zones></app-introduction-zones>
+
+<app-educational-section></app-educational-section>
+
+<app-search-by-state></app-search-by-state>
+
+<app-contact></app-contact>
+

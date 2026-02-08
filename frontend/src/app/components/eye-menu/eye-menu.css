@@ -1,0 +1,142 @@
+
+.accessibility-trigger {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  padding: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent; 
+  background: transparent; 
+  cursor: pointer;
+}
+
+.accessibility-trigger img {
+  height: 38px;
+  width: auto;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+  display: block;
+}
+
+.scanner-effect {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, rgba(0, 255, 255, 0.4), transparent);
+  opacity: 0;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.accessibility-trigger:hover,
+.accessibility-trigger.mat-menu-trigger-opened {
+  opacity: 1;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  border-color: rgba(0, 255, 255, 0.8);
+}
+
+.accessibility-trigger:hover img { opacity: 1; }
+
+.accessibility-trigger:hover .scanner-effect {
+  opacity: 1;
+  animation: scanDown 1.2s ease-in-out infinite;
+}
+
+@keyframes scanDown {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+
+::ng-deep .accessibility-menu-panel.mat-mdc-menu-panel {
+ 
+  background: rgba(40, 45, 55, 0.65) !important; 
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px);
+  
+  border: 1px solid rgba(0, 255, 255, 0.25) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4) !important;
+  padding: 8px !important;
+  min-width: 290px !important; 
+  max-width: 350px !important;
+
+  overflow-x: hidden !important; 
+  overflow-y: auto !important; 
+}
+
+/* ELEMENTOS INTERNOS*/
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  font-size: 0.95rem;
+  color: #00ffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.menu-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  margin: 5px 0 10px;
+}
+
+/* Items del menú */
+.menu-item-glass.mat-mdc-menu-item {
+  background: transparent !important;
+  color: #eee !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1rem !important;
+  border-radius: 12px !important;
+  margin: 6px 0 !important;
+  transition: all 0.2s ease !important;
+  height: 50px !important;
+  display: flex !important;
+  align-items: center !important;
+  border: 1px solid transparent !important;
+  
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-icon {
+  margin-right: 15px;
+  font-size: 1.3rem;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+}
+
+.menu-item-glass.mat-mdc-menu-item:hover,
+.menu-item-glass.mat-mdc-menu-item:focus {
+  background: rgba(0, 255, 255, 0.12) !important;
+  color: #fff !important;
+  border-color: rgba(0, 255, 255, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(0, 255, 255, 0.15);
+  transform: translateX(5px);
+}
+
+.menu-item-glass.mat-mdc-menu-item:hover .menu-icon {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.2);
+}
+
+.menu-item-glass.active-mode {
+  background: rgba(0, 255, 136, 0.15) !important; 
+  border-left: 3px solid #00ff88 !important;
+  color: #fff !important;
+}
+
+.menu-item-glass.active-mode .menu-icon {
+  opacity: 1;
+  filter: grayscale(0%);
+}

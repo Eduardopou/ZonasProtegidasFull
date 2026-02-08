@@ -1,0 +1,71 @@
+<app-header-page></app-header-page>
+<app-back-button [floating]="true"></app-back-button>
+
+<div class="form-card" *ngIf="!isLoading; else loadingTpl">
+  <h1>{{ 'ADMIN.EDIT_ANIMAL.TITLE' | translate }}</h1>
+
+  <div style="display: flex; justify-content: center; margin-bottom: 25px;">
+    <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; border: 4px solid rgba(255,255,255,0.3); box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+      <img [src]="currentImageUrl" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+  </div>
+
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label>{{ 'ADMIN.EDIT_ANIMAL.FIELDS.COMMON_NAME.LABEL' | translate }}</label>
+      <input type="text" formControlName="common_name" [class.is-invalid]="common_name?.invalid && common_name?.touched">
+      <div class="error-feedback" *ngIf="common_name?.invalid && common_name?.touched">
+        {{ 'ADMIN.EDIT_ANIMAL.ERRORS.COMMON_NAME_REQUIRED' | translate }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>{{ 'ADMIN.EDIT_ANIMAL.FIELDS.SCIENTIFIC_NAME.LABEL' | translate }}</label>
+      <input type="text" formControlName="scientific_name">
+    </div>
+
+    <div class="form-group">
+      <fieldset>
+        <legend>{{ 'ADMIN.EDIT_ANIMAL.FIELDS.STATUS.LEGEND' | translate }}</legend>
+        <div class="radio-group">
+          <label><input type="radio" formControlName="danger_extinction" [value]="true"> {{ 'ADMIN.EDIT_ANIMAL.FIELDS.STATUS.ENDANGERED' | translate }}</label>
+          <label><input type="radio" formControlName="danger_extinction" [value]="false"> {{ 'ADMIN.EDIT_ANIMAL.FIELDS.STATUS.STABLE' | translate }}</label>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="form-group">
+      <label>{{ 'ADMIN.EDIT_ANIMAL.FIELDS.ZONE.LABEL' | translate }}</label>
+      <select formControlName="area" [class.is-invalid]="area?.invalid && area?.touched">
+        <option [ngValue]="null" disabled>{{ 'ADMIN.EDIT_ANIMAL.FIELDS.ZONE.PLACEHOLDER' | translate }}</option>
+        <option *ngFor="let zona of zonas" [ngValue]="zona.id">{{ zona.nombre }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>{{ 'ADMIN.EDIT_ANIMAL.FIELDS.IMAGE.LABEL' | translate }}</label>
+      <input type="file" (change)="onFileChange($event)" accept="image/*">
+      <small style="color: #ccc; display: block; margin-top: 5px;">{{ 'ADMIN.EDIT_ANIMAL.FIELDS.IMAGE.HELP' | translate }}</small>
+    </div>
+
+    <button type="submit" class="save-btn" [disabled]="editForm.invalid">
+      {{ 'ADMIN.EDIT_ANIMAL.ACTIONS.SAVE' | translate }}
+    </button>
+
+  </form>
+
+  <div *ngIf="successMessage" class="message success-message" style="margin-top: 20px; color: #4caf50; font-weight: bold; text-align: center;">
+    ✔️ {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="message error-message" style="margin-top: 20px; color: #ff5252; font-weight: bold; text-align: center;">
+    ❌ {{ errorMessage }}
+  </div>
+
+</div>
+
+<ng-template #loadingTpl>
+  <div style="color: white; text-align: center; padding-top: 150px; font-size: 1.5rem;">
+    {{ 'ADMIN.EDIT_ANIMAL.LOADING' | translate }}
+  </div>
+</ng-template>

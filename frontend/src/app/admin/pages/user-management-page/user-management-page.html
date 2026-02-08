@@ -1,0 +1,81 @@
+<app-header-page></app-header-page>
+<app-back-button [floating]="true"></app-back-button>
+
+<div class="user-management-container glass-container">
+  <h1>{{ 'ADMIN.USER_MANAGEMENT.TITLE' | translate }}</h1>
+
+  @if (successMessage) {
+    <div class="message success-message">{{ successMessage }}</div>
+  }
+  @if (errorMessage) {
+    <div class="message error-message">{{ errorMessage }}</div>
+  }
+
+  <div class="search-container">
+    <label for="search" class="visually-hidden">{{ 'ADMIN.USER_MANAGEMENT.SEARCH_LABEL' | translate }}</label>
+    <input
+      id="search"
+      type="text"
+      [placeholder]="'ADMIN.USER_MANAGEMENT.SEARCH_PLACEHOLDER' | translate"
+      [(ngModel)]="searchTerm"
+      (input)="filterUsers()"
+      class="search-input"
+    />
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>{{ 'ADMIN.USER_MANAGEMENT.TABLE.ID' | translate }}</th>
+          <th>{{ 'ADMIN.USER_MANAGEMENT.TABLE.NAME' | translate }}</th>
+          <th>{{ 'ADMIN.USER_MANAGEMENT.TABLE.EMAIL' | translate }}</th>
+          <th>{{ 'ADMIN.USER_MANAGEMENT.TABLE.ROLE' | translate }}</th>
+          <th>{{ 'ADMIN.USER_MANAGEMENT.TABLE.ACTIONS' | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of filteredUsers; track user.id) {
+          <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.nombre }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <span
+                class="role-label"
+                [ngClass]="{
+                  'admin-role': user.role === 'ADMIN',
+                  'user-role': user.role !== 'ADMIN'
+                }"
+              >
+                {{ getRoleTranslationKey(user.role) | translate }}
+              </span>
+            </td>
+            <td class="actions">
+              <button (click)="deleteUser(user.id)" class="delete-button">
+                {{ 'ADMIN.USER_MANAGEMENT.BUTTONS.DELETE' | translate }}
+              </button>
+              <button
+                (click)="makeAdmin(user.id)"
+                [disabled]="promoting.has(user.id)"
+                class="promote-button"
+              >
+                {{ 'ADMIN.USER_MANAGEMENT.BUTTONS.PROMOTE' | translate }}
+              </button>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="5" class="no-users-message">
+              @if (users.length === 0 && !errorMessage) {
+                {{ 'ADMIN.USER_MANAGEMENT.MESSAGES.NO_USERS' | translate }}
+              } @else if (filteredUsers.length === 0 && searchTerm) {
+                {{ 'ADMIN.USER_MANAGEMENT.MESSAGES.NO_RESULTS' | translate:{ term: searchTerm } }}
+              }
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

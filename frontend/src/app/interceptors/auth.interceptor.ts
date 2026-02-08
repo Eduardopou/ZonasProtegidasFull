@@ -1,0 +1,32 @@
+import { Injectable } from '@angular/core';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor
+} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service'; 
+
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+
+  constructor(private authService: AuthService) {} 
+
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    
+    // Obtiene el token AuthService
+    const token = this.authService.getToken(); 
+
+    // Si el token existe, clonamos la petición y añadimos la cabecera
+    if (token) {
+      const clonedRequest = request.clone({
+        headers: request.headers.set('Authorization', `Bearer ${token}`)
+      });
+      return next.handle(clonedRequest);
+    }
+
+    // Si no hay token, dejamos pasar la petición original 
+    return next.handle(request);
+  }
+}

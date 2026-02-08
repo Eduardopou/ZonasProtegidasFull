@@ -1,0 +1,266 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+                    url('/assets/background2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 3rem 1rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  
+  
+}
+
+
+/*Contenedor Principal y Estados de Animación*/
+.busqueda-container {
+  width: 100%;
+  max-width: 1400px;
+  text-align: center;
+}
+
+.busqueda-container :is(h1, .selector, .carousel-wrapper, .indicators) {
+  opacity: 0;
+  transform: translateY(40px); 
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+
+/* 🔹 ESTADO ACTIVO  Y CASCADA */
+
+.busqueda-container.in-view h1 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s; 
+}
+
+.busqueda-container.in-view .selector {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s; 
+}
+
+.busqueda-container.in-view .carousel-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s; 
+}
+
+.busqueda-container.in-view .indicators {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.7s; 
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #fff, #aaddff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.selector {
+  margin-bottom: 3rem;
+}
+
+select {
+  padding: 12px 25px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+select:hover, select:focus {
+  background: rgba(0, 0, 0, 0.6);
+  border-color: #00ffff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+select option {
+  background: #222;
+  color: white;
+}
+
+/* Carrusel Wrapper */
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  perspective: 1000px;
+}
+
+.carousel-container {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 40px 20px; 
+  width: 100%;
+  max-width: 1200px;
+  
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tarjetas  */
+.card {
+  min-width: 300px;
+  height: 420px;
+  border-radius: 24px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Efecto Hover en la tarjeta */
+.card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+  border-color: rgba(0, 255, 255, 0.4);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top, 
+    rgba(0, 0, 0, 0.95) 0%, 
+    rgba(0, 0, 0, 0.5) 40%, 
+    transparent 100%
+  );
+  transition: opacity 0.3s ease;
+}
+
+.card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 25px;
+  box-sizing: border-box;
+  text-align: left;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.card-info h2 {
+  font-size: 1.6rem;
+  margin: 0 0 5px 0;
+  font-weight: 700;
+  color: #fff;
+}
+
+.card-info p {
+  font-size: 1rem;
+  color: #00ffff; 
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+
+/* Botón Mapa */
+.map-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.map-btn:hover {
+  background: #00ffff;
+  color: #000;
+  border-color: #00ffff;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+/*Botones de navegación*/
+.nav-btn {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  font-size: 1.5rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.nav-btn:hover {
+  background: #00ffff;
+  color: #000;
+  transform: scale(1.15);
+}
+
+.nav-btn:active {
+  transform: scale(0.95);
+}
+
+/* Indicadores  */
+.indicators {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background-color: #00ffff;
+  transform: scale(1.3);
+  box-shadow: 0 0 8px #00ffff;
+}

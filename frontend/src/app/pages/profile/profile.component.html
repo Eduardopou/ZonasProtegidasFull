@@ -1,0 +1,121 @@
+<app-header-page></app-header-page>
+<app-back-button [floating]="true"></app-back-button>
+
+<div class="profile-container">
+  <div class="profile-left">
+    <div *ngIf="isLoading" class="loading-state">
+      <div class="spinner"></div>
+      <p>{{ 'PROFILE.LOADING' | translate }}</p>
+    </div>
+
+    <div *ngIf="errorMessage" class="alert-box error">
+      {{ errorMessage }}
+    </div>
+
+    <div *ngIf="user && !isLoading" class="id-card">
+      <div class="id-card-header">
+        <h1 class="official-text">{{ 'PROFILE.ID_CARD_TITLE' | translate }}</h1>
+        <div class="holo-sticker"></div>
+      </div>
+
+      <div class="profile-image-wrapper">
+        <div class="avatar-container">
+          <img 
+            [src]="getFullImageUrl(user.profileImage)" 
+            [attr.alt]="'PROFILE.IMAGE_ALT' | translate" 
+            class="profile-pic"
+          >
+          <label *ngIf="isEditing" for="file-upload" class="edit-overlay">
+            <span>📷 {{ 'PROFILE.CHANGE_PHOTO' | translate }}</span>
+          </label>
+        </div>
+        <input 
+            *ngIf="isEditing" 
+            id="file-upload" 
+            type="file" 
+            accept="image/*"
+            (change)="onFileSelected($event)"
+            hidden
+        >
+      </div>
+
+      <div class="profile-info-body">
+        <div class="info-group main-name">
+          <h2 *ngIf="!isEditing">{{ user.nombre }}</h2>
+          <input 
+            *ngIf="isEditing" 
+            [(ngModel)]="editData.nombre" 
+            type="text"
+            class="edit-input"
+            [placeholder]="'PROFILE.EDIT_NAME_PLACEHOLDER' | translate"
+          >
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="details-grid">
+          <div class="detail-item">
+            <h2>{{ 'PROFILE.ROLE_TITLE' | translate }}</h2>
+            <span class="badge-role">{{ getRoleTranslationKey(user.role) | translate }}</span>
+          </div>
+          
+          <div class="detail-item full-width">
+            <h2>{{ 'PROFILE.EMAIL_TITLE' | translate }}</h2>
+            <span class="email-text">{{ user.email }}</span>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button (click)="toggleEdit()" class="btn-secondary" [class.editing]="isEditing">
+            {{ isEditing ? ('PROFILE.BUTTONS.CANCEL' | translate) : ('PROFILE.BUTTONS.EDIT' | translate) }}
+          </button>
+          
+          <button *ngIf="isEditing" (click)="saveProfile()" class="btn-primary">
+            {{ 'PROFILE.BUTTONS.SAVE' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-right">
+    <div *ngIf="user && !isLoading" class="journal-section">
+      <div class="journal-header">
+        <h3>{{ 'PROFILE.JOURNAL.TITLE' | translate }}</h3>
+        <p class="subtitle">{{ 'PROFILE.JOURNAL.SUBTITLE' | translate }}</p>
+      </div>
+
+      <div *ngIf="favoritesErrorMessage" class="alert-box error">
+        {{ favoritesErrorMessage }}
+      </div>
+
+      <div *ngIf="favorites.length === 0 && !favoritesErrorMessage" class="empty-journal">
+        <div class="empty-icon">🍃</div>
+        <p>{{ 'PROFILE.JOURNAL.EMPTY_TITLE' | translate }}</p>
+        <small>{{ 'PROFILE.JOURNAL.EMPTY_HINT' | translate }}</small>
+      </div>
+
+      <div *ngIf="favorites.length > 0" class="favorites-grid">
+        <div *ngFor="let animal of favorites" class="journal-card">
+          <div class="card-visual" (click)="goToAnimalInfo(animal.id)">
+            <img [src]="getFullImageUrl(animal.image)" [alt]="animal.name">
+            <div class="view-overlay">
+              <span>{{ 'PROFILE.JOURNAL.VIEW_CARD' | translate }}</span>
+            </div>
+          </div>
+
+          <div class="card-data">
+            <div class="data-text">
+              <h4>{{ animal.name }}</h4>
+              <p class="scientific">{{ animal.scientificName }}</p>
+            </div>
+            
+            <button (click)="removeFavorite(animal.id)" class="btn-trash" [attr.title]="'PROFILE.JOURNAL.REMOVE_TITLE' | translate">
+              🗑️
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

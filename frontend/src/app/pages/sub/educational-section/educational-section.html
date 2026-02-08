@@ -1,0 +1,62 @@
+<app-header-page></app-header-page>
+
+<div class="edu-wrapper">
+  
+  <header class="edu-header">
+    <div class="badge-pill">🎓 {{ 'EDU.BADGE' | translate }}</div>
+    <h1>{{ 'EDU.TITLE' | translate }}</h1>
+    <p class="intro-text">
+      {{ 'EDU.INTRO' | translate }}
+    </p>
+  </header>
+
+  <section class="interactive-deck">
+    
+    <div class="expand-card" 
+         *ngFor="let item of categories"
+         [style.backgroundImage]="'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url(' + item.image + ')'">
+      
+      <div class="card-icon-floating">{{ item.icon }}</div>
+      
+      <div class="card-content">
+        <small class="neon-subtitle">{{ item.subtitleKey | translate }}</small>
+        <h2>{{ item.titleKey | translate }}</h2>
+        <div class="hidden-desc">
+          <p>{{ item.descKey | translate }}</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="facts-container">
+    <div class="bio-scanner-widget">
+      
+      <div class="scanner-controls">
+        <div class="radar-icon">📡</div>
+        <h3>{{ 'EDU.FIELD_DATA' | translate }}</h3>
+        <button class="btn-scan" (click)="nextFact()">
+          {{ 'EDU.SCAN_NEXT' | translate }}
+        </button>
+      </div>
+
+      <div class="scanner-screen">
+        <div class="screen-header">
+          <span>{{ 'EDU.RECORD' | translate }} #00{{ currentFactIndex + 1 }}</span>
+          <span class="status-dot"></span>
+        </div>
+        
+        <h4 class="species-name">{{ facts[currentFactIndex].species }}</h4>
+        <p class="fact-text">"{{ facts[currentFactIndex].textKey | translate }}"</p>
+        
+        <div style="display: flex; gap: 5px; margin-top: 15px;">
+          <div style="height: 4px; width: 60%; background: rgba(0,255,136,0.3); border-radius: 2px;"></div>
+          <div style="height: 4px; width: 30%; background: rgba(0,255,136,0.1); border-radius: 2px;"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>

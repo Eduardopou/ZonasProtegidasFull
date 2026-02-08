@@ -1,0 +1,13 @@
+node_modules/
+target/
+.mvn/
+dist/
+
+mysql_data/
+backend/uploads/
+
+.vscode/
+.idea/
+*.iml
+
+.env

@@ -1,0 +1,47 @@
+<div class="busqueda-container" #container>
+  <div class="content">
+    <h1>{{ 'SEARCH.TITLE' | translate }}</h1>
+
+    <div class="selector">
+      <select [attr.aria-label]="('SEARCH.SELECT_STATE_ARIA' | translate)" (change)="filtrarPorEstado($event)">
+        <option value="">{{ 'SEARCH.ALL_STATES' | translate }}</option>
+        <option *ngFor="let estado of estados" [value]="estado">{{ estado }}</option>
+      </select>
+    </div>
+
+    <div class="carousel-wrapper">
+      <button class="nav-btn left" (click)="moverCarrusel(-1)" [attr.aria-label]="('COMMON.PREV' | translate)">❮</button>
+
+      <div
+        class="carousel-container"
+        #carousel
+        (mouseenter)="pausarAutoPlay()"
+        (mouseleave)="reanudarAutoPlay()"
+      >
+        <div
+          class="card"
+          *ngFor="let zona of zonasFiltradas"
+          (click)="abrirZona(zona.id)"
+          [style.backgroundImage]="'url(' + zona.imagen + ')'"
+        >
+          <div class="overlay"></div>
+          <div class="card-info">
+            <h2>{{ zona.nombre }}</h2>
+            <p>📍 {{ zona.estado }}</p>
+            <button class="map-btn" (click)="verEnMapa(zona, $event)">
+              🌍 {{ 'SEARCH.VIEW_MAP' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button class="nav-btn right" (click)="moverCarrusel(1)" [attr.aria-label]="('COMMON.NEXT' | translate)">❯</button>
+    </div>
+
+    <div class="indicators">
+       <span class="dot active"></span>
+       <span class="dot"></span>
+       <span class="dot"></span>
+    </div>
+  </div>
+</div>

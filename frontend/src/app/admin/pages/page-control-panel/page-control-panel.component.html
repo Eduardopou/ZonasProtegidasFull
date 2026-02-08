@@ -1,0 +1,111 @@
+<app-header-page></app-header-page>
+<app-back-button [floating]="true"></app-back-button>
+
+<div class="dashboard-container">
+  
+  <header class="dashboard-header">
+    <div class="welcome-text">
+      <h1>{{ 'ADMIN.CONTROL_PANEL.HEADER.TITLE' | translate }}</h1>
+      <p>{{ 'ADMIN.CONTROL_PANEL.HEADER.SUBTITLE' | translate }}</p>
+    </div>
+    
+    <div class="weather-widget">
+      <span class="weather-icon">⛅</span>
+      <div>
+        <span class="temp">{{ weather.temp }}</span>
+        <span class="loc">{{ weather.locationKey | translate }}</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="stats-row">
+    <div class="stat-card" *ngFor="let stat of stats" [class.warning]="stat.isWarning">
+      <div class="stat-icon">{{ stat.icon }}</div>
+      <div class="stat-info">
+        <h2>{{ stat.value }}</h2>
+        <p>{{ stat.labelKey | translate }}</p>
+      </div>
+      <div class="stat-change">{{ stat.changeKey ? (stat.changeKey | translate) : stat.change }}</div>
+    </div>
+  </section>
+
+  <div class="main-layout">
+    
+    <section class="tools-grid">
+      <h2 class="section-title">{{ 'ADMIN.CONTROL_PANEL.TOOLS.TITLE' | translate }}</h2>
+      
+      <div class="grid-container">
+        <div class="tool-card" *ngIf="authService.hasRole('ROLE_ADMIN')" [routerLink]="['/admin/add-animals-page-component']">
+          <div class="card-bg icon-bg-1"></div>
+          <span class="tool-icon">🐾</span>
+          <div class="tool-content">
+            <h2>{{ 'ADMIN.CONTROL_PANEL.TOOLS.FAUNA.TITLE' | translate }}</h2>
+            <p>{{ 'ADMIN.CONTROL_PANEL.TOOLS.FAUNA.DESC' | translate }}</p>
+          </div>
+        </div>
+
+        <div class="tool-card" *ngIf="authService.hasRole('ROLE_ADMIN')" [routerLink]="['/admin/user-management-page']">
+          <div class="card-bg icon-bg-2"></div>
+          <span class="tool-icon">👥</span>
+          <div class="tool-content">
+            <h2>{{ 'ADMIN.CONTROL_PANEL.TOOLS.USERS.TITLE' | translate }}</h2>
+            <p>{{ 'ADMIN.CONTROL_PANEL.TOOLS.USERS.DESC' | translate }}</p>
+          </div>
+        </div>
+
+        <div class="tool-card" *ngIf="authService.hasRole('ROLE_ADMIN')" [routerLink]="['/admin/zones']">
+          <div class="card-bg icon-bg-3"></div>
+          <span class="tool-icon">🗺️</span>
+          <div class="tool-content">
+            <h2>{{ 'ADMIN.CONTROL_PANEL.TOOLS.ZONES.TITLE' | translate }}</h2>
+            <p>{{ 'ADMIN.CONTROL_PANEL.TOOLS.ZONES.DESC' | translate }}</p>
+          </div>
+        </div>
+
+        <div class="tool-card" *ngIf="authService.hasRole('ROLE_ADMIN')" [routerLink]="['/admin/reports']">
+          <div class="card-bg icon-bg-4"></div>
+          <span class="tool-icon">📊</span>
+          <div class="tool-content">
+            <h2>{{ 'ADMIN.CONTROL_PANEL.TOOLS.REPORTS.TITLE' | translate }}</h2>
+            <p>{{ 'ADMIN.CONTROL_PANEL.TOOLS.REPORTS.DESC' | translate }}</p>
+          </div>
+        </div>
+        
+        <div class="tool-card" *ngIf="authService.hasRole('ROLE_ADMIN')" [routerLink]="['/admin/research-management']">
+          <div class="card-bg icon-bg-5"></div>
+          <span class="tool-icon">🔬</span>
+          <div class="tool-content">
+            <h2>{{ 'ADMIN.CONTROL_PANEL.TOOLS.RESEARCH.TITLE' | translate }}</h2>
+            <p>{{ 'ADMIN.CONTROL_PANEL.TOOLS.RESEARCH.DESC' | translate }}</p>
+          </div>
+        </div>
+        
+        <div class="tool-card inactive">
+          <span class="tool-icon">🖼️</span>
+          <div class="tool-content">
+            <h2>{{ 'ADMIN.CONTROL_PANEL.TOOLS.GALLERY.TITLE' | translate }}</h2>
+            <p>{{ 'ADMIN.CONTROL_PANEL.TOOLS.GALLERY.DESC' | translate }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="activity-feed">
+      <h2 class="section-title">{{ 'ADMIN.CONTROL_PANEL.ACTIVITY.TITLE' | translate }}</h2>
+      <div class="feed-list">
+        <div class="feed-item" *ngFor="let item of recentActivity">
+          <div class="feed-dot"></div>
+          <div class="feed-content">
+            <p><strong>{{ item.user }}</strong> {{ item.actionKey | translate }}</p>
+            <small>{{ item.targetKey | translate }} • {{ item.timeKey | translate:{ value: item.timeValue } }}</small>
+          </div>
+        </div>
+      </div>
+      
+      <button class="btn-quick-action" (click)="goToQuickAction()">
+        <span>⚡</span> {{ 'ADMIN.CONTROL_PANEL.ACTIVITY.QUICK_ACTION' | translate }}
+      </button>
+    </aside>
+
+  </div>
+</div>

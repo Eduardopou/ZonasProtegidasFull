@@ -1,0 +1,75 @@
+<div class="comments-wrapper">
+  <div class="comments-header">
+    <h3>{{ sectionConfig.title }}</h3>
+    <div class="live-indicator">
+      <span class="dot"></span> Actividad reciente
+    </div>
+  </div>
+
+  <div *ngIf="!isLoggedIn" class="guest-prompt">
+    <div class="lock-icon">🔒</div>
+    <div class="prompt-text">
+      <h4>Acceso a la Bitácora</h4>
+      <p>Identifícate para reportar avistamientos y conectar con la comunidad.</p>
+    </div>
+    <button (click)="goToLogin()" class="btn-login-prompt">
+      Iniciar Sesión / Registrarse
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedIn" class="input-area fade-in">
+    <div class="user-mini-avatar">
+      <img src="assets/user.png" alt="Tu avatar">
+    </div>
+    <div class="input-wrapper">
+      <textarea 
+        [(ngModel)]="newCommentText" 
+        [placeholder]="sectionConfig.placeholder"
+        rows="2"
+        aria-label="Escribir un nuevo comentario o reporte" 
+      ></textarea>
+      <div class="input-actions">
+        <div class="tags-selector">
+          <span class="tag-label">Etiqueta:</span>
+          <span *ngFor="let tag of sectionConfig.tags" class="tag-chip">{{ tag }}</span>
+        </div>
+        <button (click)="addComment()" class="btn-send" [disabled]="!newCommentText.trim()">
+          Publicar 📡
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="comments-list">
+    <div *ngFor="let comment of comments" class="comment-card">
+      <div class="comment-sidebar">
+        <img [src]="comment.userAvatar" 
+        alt="Avatar usuario" class="avatar">
+      </div>
+
+      <div class="comment-body">
+        <div class="comment-meta">
+          <span class="username" [class.official]="comment.userRole === 'ADMIN'">
+            {{ comment.userName }}
+            <span *ngIf="comment.userRole === 'ADMIN'" class="badge-official">✓ OFICIAL</span>
+          </span>
+          <span class="date">{{ comment.date }}</span>
+        </div>
+        
+        <div class="tag-display" *ngIf="comment.tag">
+          #{{ comment.tag }}
+        </div>
+
+        <p class="text">{{ comment.content }}</p>
+
+        <div *ngIf="comment.adminReply" class="official-reply">
+          <div class="reply-header">
+            <span class="icon">🛡️</span> Respuesta de la Administración
+          </div>
+          <p>{{ comment.adminReply }}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

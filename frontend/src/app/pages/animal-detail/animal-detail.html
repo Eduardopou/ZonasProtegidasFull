@@ -1,0 +1,166 @@
+<app-header-page></app-header-page>
+<app-back-button [floating]="true"></app-back-button>
+
+<div class="detail-container" *ngIf="!loading; else baseLoading">
+  <div class="hero" *ngIf="animal as a">
+    <div class="hero-image" [style.backgroundImage]="'url(' + a.image + ')'">
+      <div class="overlay"></div>
+    </div>
+    <div class="hero-info">
+      <h1 class="title">{{ a.name }}</h1>
+      <p class="scientific">{{ a.scientificName }}</p>
+      <div class="chips">
+        <span class="chip endangered" *ngIf="a.extinction">En peligro</span>
+        <span class="chip zone" *ngIf="a.zonaProtegidaNombre">{{ a.zonaProtegidaNombre }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-grid">
+    <aside class="side">
+      <div class="card" *ngIf="ficha?.taxonomia as t">
+        <div class="card-header">Taxonomía</div>
+        <div class="kv">
+          <div><span class="k">Reino</span><span class="v">{{ t.reino || '—' }}</span></div>
+          <div><span class="k">Filo</span><span class="v">{{ t.filo || '—' }}</span></div>
+          <div><span class="k">Clase</span><span class="v">{{ t.clase || '—' }}</span></div>
+          <div><span class="k">Orden</span><span class="v">{{ t.orden || '—' }}</span></div>
+          <div><span class="k">Familia</span><span class="v">{{ t.familia || '—' }}</span></div>
+          <div><span class="k">Género</span><span class="v">{{ t.genero || '—' }}</span></div>
+          <div><span class="k">Especie</span><span class="v">{{ t.especie || '—' }}</span></div>
+        </div>
+      </div>
+
+      <div class="card" *ngIf="ficha?.conservacion as c">
+        <div class="card-header">Conservación</div>
+        <div class="kv">
+          <div><span class="k">Estado UICN</span><span class="v">{{ c.estado_uicn || '—' }}</span></div>
+          <div><span class="k">Tendencia</span><span class="v">{{ c.tendencia_poblacional || '—' }}</span></div>
+        </div>
+      </div>
+
+      <div class="card" *ngIf="ficha?.fuentes?.length">
+        <div class="card-header">Fuentes (recomendadas)</div>
+        <ul class="sources">
+          <li *ngFor="let f of ficha!.fuentes">
+            <a *ngIf="f.url; else noLink" [href]="f.url" target="_blank" rel="noopener">
+              {{ f.titulo || f.fuente || 'Referencia' }}
+            </a>
+            <ng-template #noLink>
+              <span>{{ f.titulo || f.fuente || 'Referencia' }}</span>
+            </ng-template>
+            <small class="src-meta" *ngIf="f.fuente || f.anio">{{ f.fuente }}<span *ngIf="f.fuente && f.anio"> · </span>{{ f.anio }}</small>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="section" *ngIf="ficha?.resumen">
+        <h2>Resumen</h2>
+        <p>{{ ficha!.resumen }}</p>
+      </div>
+
+      <div class="section two-col" *ngIf="ficha?.morfologia as m">
+        <h2>Morfología</h2>
+        <div class="fields">
+          <div class="field"><span class="label">Descripción general</span><p>{{ m.descripcion_general }}</p></div>
+          <div class="field"><span class="label">Dimensiones</span><p>{{ m.dimensiones }}</p></div>
+          <div class="field"><span class="label">Diferencias sexuales</span><p>{{ m.diferencias_sexuales }}</p></div>
+          <div class="field"><span class="label">Adaptaciones relevantes</span><p>{{ m.adaptaciones_relevantes }}</p></div>
+        </div>
+      </div>
+
+      <div class="section two-col" *ngIf="ficha?.habitat as h">
+        <h2>Hábitat</h2>
+        <div class="fields">
+          <div class="field"><span class="label">Tipo</span><p>{{ h.tipo }}</p></div>
+          <div class="field"><span class="label">Características</span><p>{{ h.caracteristicas }}</p></div>
+          <div class="field"><span class="label">Microhábitat</span><p>{{ h.microhabitat }}</p></div>
+        </div>
+      </div>
+
+      <div class="section two-col" *ngIf="ficha?.dieta as d">
+        <h2>Dieta</h2>
+        <div class="fields">
+          <div class="field"><span class="label">Tipo</span><p>{{ d.tipo }}</p></div>
+          <div class="field"><span class="label">Alimentos principales</span><p>{{ d.alimentos_principales }}</p></div>
+          <div class="field"><span class="label">Variaciones estacionales</span><p>{{ d.variaciones_estacionales }}</p></div>
+        </div>
+      </div>
+
+      <div class="section two-col" *ngIf="ficha?.comportamiento as b">
+        <h2>Comportamiento</h2>
+        <div class="fields">
+          <div class="field"><span class="label">Actividad</span><p>{{ b.actividad }}</p></div>
+          <div class="field"><span class="label">Social</span><p>{{ b.social }}</p></div>
+          <div class="field"><span class="label">Territorialidad</span><p>{{ b.territorialidad }}</p></div>
+          <div class="field"><span class="label">Migración</span><p>{{ b.migracion }}</p></div>
+        </div>
+      </div>
+
+      <div class="section two-col" *ngIf="ficha?.reproduccion as r">
+        <h2>Reproducción</h2>
+        <div class="fields">
+          <div class="field"><span class="label">Sistema de apareamiento</span><p>{{ r.sistema_mating }}</p></div>
+          <div class="field"><span class="label">Ciclo reproductivo</span><p>{{ r.ciclo_reproductivo }}</p></div>
+          <div class="field"><span class="label">Gestación/Incubación</span><p>{{ r.gestacion_incubacion }}</p></div>
+          <div class="field"><span class="label">Tamaño de camada</span><p>{{ r.tamano_camada }}</p></div>
+          <div class="field"><span class="label">Cuidado parental</span><p>{{ r.cuidado_parental }}</p></div>
+        </div>
+      </div>
+
+      <div class="section two-col" *ngIf="ficha?.distribucion as dist">
+        <h2>Distribución</h2>
+        <div class="fields">
+          <div class="field"><span class="label">Rango geográfico</span><p>{{ dist.rango_geografico }}</p></div>
+          <div class="field"><span class="label">Altitud</span><p>{{ dist.altitud }}</p></div>
+          <div class="field"><span class="label">Mapa (descripción)</span><p>{{ dist.mapa_descriptivo }}</p></div>
+        </div>
+      </div>
+
+      <div class="section two-col" *ngIf="ficha?.amenazas as am">
+        <h2>Amenazas</h2>
+        <div class="fields">
+          <div class="field"><span class="label">Naturales</span><p>{{ am.naturales }}</p></div>
+          <div class="field"><span class="label">Antrópicas</span><p>{{ am.antropicas }}</p></div>
+        </div>
+      </div>
+
+      <div class="section" *ngIf="ficha?.datos_interes?.length">
+        <h2>Datos de interés</h2>
+        <ul class="bullets">
+          <li *ngFor="let d of ficha!.datos_interes">{{ d }}</li>
+        </ul>
+      </div>
+
+      <div class="section" *ngIf="rawIA && !ficha">
+        <h2>Contenido generado</h2>
+        <p>{{ rawIA }}</p>
+      </div>
+
+      <div class="section muted" *ngIf="!loadingAI && !ficha && !rawIA">
+        <p>No hay información disponible por el momento.</p>
+      </div>
+    </main>
+  </div>
+
+  <div class="ai-loading" *ngIf="loadingAI">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <p>Generando ficha técnica con IA…</p>
+  </div>
+
+  <div class="error" *ngIf="error">
+    {{ error }}
+  </div>
+</div>
+
+<ng-template #baseLoading>
+  <div class="skeleton">
+    <div class="hero-skel"></div>
+    <div class="grid-skel">
+      <div class="card-skel"></div>
+      <div class="content-skel"></div>
+    </div>
+  </div>
+</ng-template>

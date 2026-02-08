@@ -1,0 +1,121 @@
+@font-face {
+  font-family: 'National Park';
+  src: url('/assets/fonts/NationalPark-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'National Park', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'National Park', sans-serif;
+  letter-spacing: 1px;
+
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #00FFFF;  
+  outline-offset: 2px;          
+  box-shadow: 0 0 0 5px rgba(0, 255, 255, 0.3); 
+  border-radius: 4px;           
+}
+
+main {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/*
+* 
+* CLASE DE ACCESIBILIDAD (A11Y): Solo para lectores de pantalla
+* 
+* Oculta visualmente un elemento, pero lo mantiene
+* accesible para lectores de pantalla (screen readers).
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.glassmorphism-dialog-panel .mat-mdc-dialog-container .mdc-dialog__surface {
+  
+  background: rgba(20, 20, 20, 0.45) !important; 
+  
+  backdrop-filter: blur(15px) saturate(150%);
+  -webkit-backdrop-filter: blur(15px) saturate(150%); 
+  
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  
+  border-radius: 16px; 
+  color: #ffffff !important; 
+}
+.glassmorphism-dialog-panel .mat-mdc-dialog-title,
+.glassmorphism-dialog-panel .mat-mdc-dialog-content,
+.glassmorphism-dialog-panel .mat-mdc-button .mdc-button__label {
+  color: #ffffff !important;
+}
+
+.glassmorphism-dialog-panel .mat-mdc-icon-button .mat-icon {
+  color: #ffffffb3 !important; 
+}
+
+.glassmorphism-dialog-panel .mat-mdc-dialog-container {
+  box-shadow: none !important;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/assets/fonts/OpenDyslexic-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/assets/fonts/OpenDyslexic-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Clase Maestra de Accesibilidad */
+body.modo-dislexia {
+  font-family: 'OpenDyslexic', sans-serif !important;
+}
+
+body.modo-dislexia * {
+  font-family: 'OpenDyslexic', sans-serif !important;
+  line-height: 1.6 !important; 
+}
+
+/* MODO DALTONISMO */
+body.modo-daltonismo {
+  filter: url('#filtro-daltonismo'); 
+  
+
+}

@@ -1,0 +1,97 @@
+/* ------------------------------- */
+/* --- ESTILOS DIÁLOGO INTERNO --- */
+/* ------------------------------- */
+
+/* Header del diálogo */
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 12px;
+}
+
+.dialog-header h1 {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Lista de botones de zonas */
+.zona-button-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 40px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* Botón de zona con estilo glass */
+.zona-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: #ffffff;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+/* Hover para el botón de zona */
+.zona-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenido del botón */
+.zona-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.zona-nombre {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.zona-ubicacion {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+/* La flecha */
+.zona-arrow {
+  font-size: 1.6em;
+  font-weight: 300;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.2s ease-out;
+}
+
+/* Al hacer hover, la flecha aparece y se mueve */
+.zona-button:hover .zona-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Ajustes de scrollbar (opcional pero elegante) */
+.zona-button-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.zona-button-list::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+}
+
+.zona-button-list::-webkit-scrollbar-track {
+  background: transparent;
+}
